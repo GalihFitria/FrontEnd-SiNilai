@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengolahan Data</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="w-64 bg-blue-700 min-h-screen text-white p-4">
+            <h1 class="text-center text-2xl font-bold mb-6">SiNilai</h1>
+            <nav>
+                <ul>
+                    <li class="mb-4">
+                        <a href="dashboard_dosen" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
+                            🏠 Dashboard
+                        </a>
+                    </li>
+                    <li class="mb-4 relative">
+                        <button onclick="toggleDropdown()" class="w-full flex items-center justify-between text-white font-semibold hover:bg-blue-800 p-2 rounded">
+                            📊 Pengolahan Data
+                            <span id="arrow">▼</span>
+                        </button>
+                        <ul id="dropdown" class="hidden bg-blue-600 mt-2 rounded-lg">
+                            <li>
+                                <a href="penilaian" class="block px-4 py-2 hover:bg-blue-700">📑 Penilaian</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="login" onclick="openLogoutModal(event)" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
+                            🔌 Log Out
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content -->
+        <main class="flex-1 p-6">
+            <h2 class="text-xl font-bold">Data Penilaian</h2>
+            <div class="bg-white shadow-md p-4 rounded-lg mt-4">
+                <a href="tambahdata" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah Data</a>
+                <table class="w-full mt-4 border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="border p-2">No.</th>
+                            <th class="border p-2">NIM</th>
+                            <th class="border p-2">NIDN</th>
+                            <th class="border p-2">Kode Matkul</th>
+                            <th class="border p-2">Tugas</th>
+                            <th class="border p-2">UTS</th>
+                            <th class="border p-2">UAS</th>
+                            <th class="border p-2">Nilai Akhir</th>
+                            <th class="border p-2">Status</th>
+                            <th class="border p-2">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border p-2 text-center">1</td>
+                            <td class="border p-2">230302060</td>
+                            <td class="border p-2">1234567890</td>
+                            <td class="border p-2">0302</td>
+                            <td class="border p-2">90</td>
+                            <td class="border p-2">80</td>
+                            <td class="border p-2">70</td>
+                            <td class="border p-2">88</td>
+                            <td class="border p-2">Lulus</td>
+                            <td class="border p-2 text-center">
+                                <a href="edit" class="text-blue-500 hover:underline">✏️</a> |
+                                <a href="#" onclick="confirmDelete(this)" class="text-red-500 hover:underline">🗑️</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Logout -->
+    <div id="logoutModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+            <h2 class="text-lg font-bold mb-4">Konfirmasi Logout</h2>
+            <p>Apakah Anda yakin ingin logout?</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <button onclick="confirmLogout()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Ya, Logout</button>
+                <button onclick="closeLogoutModal()" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div id="deleteModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+            <h2 class="text-xl font-bold mb-4">Konfirmasi Hapus</h2>
+            <p>Apakah Anda yakin ingin menghapus data ini?</p>
+            <div class="flex justify-between mt-4">
+                <button onclick="closeDeleteModal()" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">
+                    Batal
+                </button>
+                <button onclick="deleteData()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            let dropdown = document.getElementById("dropdown");
+            let arrow = document.getElementById("arrow");
+            if (dropdown.classList.contains("hidden")) {
+                dropdown.classList.remove("hidden");
+                arrow.innerHTML = "▲";
+            } else {
+                dropdown.classList.add("hidden");
+                arrow.innerHTML = "▼";
+            }
+        }
+
+        function openLogoutModal(event) {
+            event.preventDefault();
+            document.getElementById("logoutModal").classList.remove("hidden");
+        }
+
+        function closeLogoutModal() {
+            document.getElementById("logoutModal").classList.add("hidden");
+        }
+
+        function confirmLogout() {
+            window.location.href = "login";
+        }
+
+        let deleteElement = null; // Simpan elemen yang akan dihapus
+
+        function confirmDelete(element) {
+            deleteElement = element.closest("tr"); // Simpan baris yang akan dihapus
+            document.getElementById("deleteModal").classList.remove("hidden");
+        }
+
+        function closeDeleteModal() {
+            document.getElementById("deleteModal").classList.add("hidden");
+        }
+
+        function deleteData() {
+            if (deleteElement) {
+                deleteElement.remove(); // Hapus baris dari tabel
+                deleteElement = null; // Reset setelah dihapus
+            }
+            closeDeleteModal(); // Tutup modal setelah konfirmasi
+        }
+    </script>
+</body>
+
+</html>
