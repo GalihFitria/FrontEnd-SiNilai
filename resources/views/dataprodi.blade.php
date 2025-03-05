@@ -52,8 +52,8 @@
                     <thead>
                         <tr class="bg-gray-200">
                             <th class="border p-2">No.</th>
-                            <th class="border p-2">id_prodi</th>
-                            <th class="border p-2">nama_prodi</th>
+                            <th class="border p-2">Id Prodi</th>
+                            <th class="border p-2">Nama Prodi</th>
                             <th class="border p-2">Aksi</th>
                         </tr>
                     </thead>

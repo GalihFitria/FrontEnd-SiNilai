@@ -51,10 +51,10 @@
                 <table class="w-full mt-4 border-collapse border border-gray-300">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th class="border p-2">No.</th>
-                            <th class="border p-2">NIM</th>
-                            <th class="border p-2">NIDN</th>
+                            <th class="border p-2">Id Nilai</th>
+                            <th class="border p-2">NPM</th>
                             <th class="border p-2">Kode Matkul</th>
+                            <th class="border p-2">NIDN</th>
                             <th class="border p-2">Tugas</th>
                             <th class="border p-2">UTS</th>
                             <th class="border p-2">UAS</th>

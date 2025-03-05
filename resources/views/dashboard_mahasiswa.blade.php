@@ -10,8 +10,8 @@
 
 <body class="bg-gray-100">
     <div class="flex">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="w-64 bg-blue-700 min-h-screen text-white p-4">
+        <!-- Sidebar Biru -->
+        <aside id="sidebar" class="w-64 bg-blue-700 min-h-screen text-white p-4 fixed">
             <h1 class="text-center text-2xl font-bold mb-6">SiNilai</h1>
             <nav>
                 <ul>
@@ -20,23 +20,6 @@
                             🏠 Dashboard
                         </a>
                     </li>
-
-                    <!-- Pengolahan Data dengan Dropdown -->
-                    <!-- <li class="mb-4 relative">
-                        <button id="dropdownButton" class="w-full flex items-center justify-between text-white font-semibold hover:bg-blue-800 p-2 rounded">
-                            📊 Pengolahan Data
-                            <span id="arrow">▼</span>
-                        </button> -->
-
-                        <!-- Dropdown Menu -->
-                        <!-- <ul id="dropdown" class="hidden bg-blue-600 mt-2 rounded-lg">
-                            <li>
-                                <a href="cetakKHS" class="block px-4 py-2 hover:bg-blue-700"> Cetak KHS</a>
-                            </li>
-                        </ul>
-                    </li> -->
-
-                    <!-- Logout Button -->
                     <li>
                         <a href="login" onclick="openLogoutModal(event)" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
                             🔐 Log Out
@@ -47,36 +30,66 @@
         </aside>
 
         <!-- Content -->
-        <main class="flex-1 p-6">
-            <h2 class="text-xl font-bold">Dashboard</h2>
-
-            <!-- Notifikasi Selamat Datang -->
-            <!-- <div class="bg-green-200 text-green-800 p-4 rounded-lg mt-4">
-                <h3 class="font-bold">Selamat Datang!</h3>
-                <p>Selamat Datang <strong>Bunga</strong> di Sistem Informasi Pengelolaan Nilai Mahasiswa. Anda Login Sebagai <strong>Mahasiswa</strong></p>
-            </div> -->
-
-         
-            <!-- <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-                <div class="bg-white shadow-md p-4 rounded-lg">
-                    <h4 class="text-blue-600 font-bold">TAHUN AJARAN</h4>
-                    <p class="text-2xl font-bold">2020/2021</p>
+        <main class="flex-1 ml-64 p-6 mt-16">
+            <!-- Kartu Hasil Studi (KHS) -->
+            <div class="bg-white p-6 rounded-lg shadow-md mt-6 border border-blue-300">
+                <h3 class="text-lg font-bold text-blue-700">KARTU HASIL STUDI</h3>
+                <div class="bg-gray-200 p-3 rounded mt-2">
+                    <p><strong>Keterangan :</strong></p>
+                    <p>Kartu Hasil Studi merupakan fasilitas yang dapat digunakan untuk melihat hasil studi mahasiswa per semester. Selain dapat dilihat secara online, hasil studi ini juga dapat dicetak.</p>
                 </div>
 
-                <div class="bg-white shadow-md p-4 rounded-lg">
-                    <h4 class="text-orange-500 font-bold">SEMESTER</h4>
-                    <p class="text-2xl font-bold">Ganjil</p>
-                </div>
-
-                <div class="bg-white shadow-md p-4 rounded-lg">
-                    <h4 class="text-green-600 font-bold">MAHASISWA</h4>
-                    <p class="text-2xl font-bold">1.090</p>
-                </div>
-
-                <div class="bg-white shadow-md p-4 rounded-lg">
-                    <h4 class="text-green-500 font-bold">DOSEN</h4>
-                    <p class="text-2xl font-bold">200</p>
+                <!-- <div class="mt-4">
+                    <label class="block font-semibold">Pilih Semester</label>
+                    <select class="border p-2 w-full rounded mt-1">
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                        <option value="3">Semester 3</option>
+                        <option value="4">Semester 4</option>
+                        <option value="5">Semester 5</option>
+                        <option value="6">Semester 6</option>
+                        <option value="7">Semester 7</option>
+                        <option value="8">Semester 8</option>
+                    </select>
                 </div> -->
+                <div class="mt-2">
+                    <label class="block font-semibold">NPM</label>
+                    <input type="text" class="border p-2 w-100 rounded mt-1" placeholder="Masukkan NPM">
+                </div>
+                <div class="mt-2">
+                    <label class="block font-semibold">Nama Mahasiswa</label>
+                    <input type="text" class="border p-2 w-1/2 rounded mt-1" placeholder="Masukkan Nama Mahasiswa">
+                </div>
+                <div class="mt-2">
+                    <label class="block font-semibold">Program Studi</label>
+                    <input type="text" class="border p-2 w-1/2 rounded mt-1" placeholder="Masukkan Program Studi">
+                </div>
+                <button class="bg-green-500 text-white p-2 mt-4 rounded hover:bg-green-600">📝 Lihat KHS</button>
+
+                <table class="w-full border mt-4 text-center">
+                    <thead>
+                        <tr class="bg-gray-300">
+                            <th class="border p-2">No.</th>
+                            <th class="border p-2">Kode Matkul</th>
+                            <th class="border p-2">Nama Matkul</th>
+                            <th class="border p-2">SKS</th>
+                            <th class="border p-2">Nilai Akhir</th>
+                            <th class="border p-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-gray-100">
+                            <td class="border p-2">1</td>
+                            <td class="border p-2">IF101</td>
+                            <td class="border p-2">Algoritma</td>
+                            <td class="border p-2">3</td>
+                            <td class="border p-2">A</td>
+                            <td class="border p-2">Lulus</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button class="bg-blue-500 text-white p-2 mt-4 rounded hover:bg-blue-600">🖨 Cetak KHS</button>
             </div>
         </main>
     </div>
@@ -94,31 +107,6 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let dropdown = document.getElementById("dropdown");
-            let arrow = document.getElementById("arrow");
-            let dropdownButton = document.getElementById("dropdownButton");
-
-            dropdownButton.addEventListener("click", function(event) {
-                event.stopPropagation(); // Mencegah event bubbling
-                dropdown.classList.toggle("hidden");
-                arrow.innerHTML = dropdown.classList.contains("hidden") ? "▼" : "▲";
-            });
-
-            // Mencegah dropdown menutup saat klik pada item di dalamnya
-            dropdown.addEventListener("click", function(event) {
-                event.stopPropagation();
-            });
-
-            // Menutup dropdown jika klik di luar dropdown
-            document.addEventListener("click", function() {
-                if (!dropdown.classList.contains("hidden")) {
-                    dropdown.classList.add("hidden");
-                    arrow.innerHTML = "▼";
-                }
-            });
-        });
-
         function openLogoutModal(event) {
             event.preventDefault();
             document.getElementById("logoutModal").classList.remove("hidden");

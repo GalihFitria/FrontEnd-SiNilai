@@ -52,10 +52,10 @@
                     <thead>
                         <tr class="bg-gray-200">
                             <th class="border p-2">No.</th>
-                            <th class="border p-2">npm</th>
-                            <th class="border p-2">nama_mhs</th>
-                            <th class="border p-2">kode_kelas</th>
-                            <th class="border p-2">id_prodi</th>
+                            <th class="border p-2">NPM</th>
+                            <th class="border p-2">Nama Mahasiswa</th>
+                            <th class="border p-2">Kode kelas</th>
+                            <th class="border p-2">Id Prodi</th>
                             <th class="border p-2">Aksi</th>
                         </tr>
                     </thead>

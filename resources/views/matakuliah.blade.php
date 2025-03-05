@@ -52,10 +52,10 @@
                     <thead>
                         <tr class="bg-gray-200">
                             <th class="border p-2">No.</th>
-                            <th class="border p-2">kode_matkul</th>
-                            <th class="border p-2">nama_matkul</th>
-                            <th class="border p-2">semester</th>
-                            <th class="border p-2">sks</th>
+                            <th class="border p-2">Kode Matkul</th>
+                            <th class="border p-2">Nama Matkul</th>
+                            <th class="border p-2">Semester</th>
+                            <th class="border p-2">SKS</th>
                             <th class="border p-2">Aksi</th>
                         </tr>
                     </thead>
