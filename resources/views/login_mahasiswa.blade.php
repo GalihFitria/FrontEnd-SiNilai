@@ -16,7 +16,7 @@
         <p class="text-left text-gray-500 mb-4">Silahkan masuk ke akun anda.</p>
 
 
-        <form action="dashboard_mahasiswa" method="POST">
+        <form action="dashboard_mahasiswa" method="GET">
             <label class="block text-gray-700 font-semibold">USERNAME</label>
             <input type="text" name="username" placeholder="Masukkan username anda" required class="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none">
 
@@ -24,7 +24,7 @@
             <label class="block text-gray-700 font-semibold mt-3">KATA SANDI</label>
             <input type="password" name="password" placeholder="Masukkan password anda" required class="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none">
 
-           
+
             <div class="flex items-center justify-between mt-2">
                 <label class="flex items-center">
                     <input type="checkbox" class="mr-2">

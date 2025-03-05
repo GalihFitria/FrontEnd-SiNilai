@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\dashboard_mahasiswa;
+use App\Models\tambahmatkul;
 use Illuminate\Http\Request;
 
-class DashboardMahasiswaController extends Controller
+class TambahmatkulController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view ('dashboard_mahasiswa');
+        return view ('tambahmatkul');
     }
 
     /**
@@ -34,7 +34,7 @@ class DashboardMahasiswaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(dashboard_mahasiswa $dashboard_mahasiswa)
+    public function show(tambahmatkul $tambahmatkul)
     {
         //
     }
@@ -42,7 +42,7 @@ class DashboardMahasiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(dashboard_mahasiswa $dashboard_mahasiswa)
+    public function edit(tambahmatkul $tambahmatkul)
     {
         //
     }
@@ -50,7 +50,7 @@ class DashboardMahasiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, dashboard_mahasiswa $dashboard_mahasiswa)
+    public function update(Request $request, tambahmatkul $tambahmatkul)
     {
         //
     }
@@ -58,7 +58,7 @@ class DashboardMahasiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(dashboard_mahasiswa $dashboard_mahasiswa)
+    public function destroy(tambahmatkul $tambahmatkul)
     {
         //
     }

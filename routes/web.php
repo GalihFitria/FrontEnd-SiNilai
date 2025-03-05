@@ -27,24 +27,88 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Router Dashboard
 Route::get('/dashboard_dosen', function () {
     return view('dashboard_dosen');
 });
+Route::get('/dashboard_mahasiswa', function () {
+    return view('dashboard_mahasiswa');
+});
 
+Route::get('/cetakKHS', function () {
+    return view('cetakKHS');
+});
+
+
+//Route Penilaian
 Route::get('/penilaian', function () {
     return view('penilaian');
 });
-
 Route::get('/tambahdata', function () {
     return view('tambahdata');
 });
-
 Route::get('/edit', function () {
     return view('edit');
 });
 
+//Route Data Dosen
+Route::get('/datadosen', function () {
+    return view('datadosen');
+});
+Route::get('/editdosen', function () {
+    return view('editdosen');
+});
+Route::get('/tambahdosen', function () {
+    return view('tambahdosen');
+});
 
-Route::resource('orang', OrangController::class);
+
+//return Data mahasiswa
+Route::get('/datamahasiswa', function () {
+    return view('datamahasiswa');
+});
+Route::get('/editmahasiswa', function () {
+    return view('editmahasiswa');
+});
+Route::get('/tambahmahasiswa', function () {
+    return view('tambahmahasiswa');
+});
+
+
+//route matkul
+Route::get('/matakuliah', function () {
+    return view('matakuliah');
+});
+Route::get('/editmatkul', function () {
+    return view('editmatkul');
+});
+Route::get('/tambahmatkul', function () {
+    return view('tambahmatkul');
+});
+
+//Route Prodi
+Route::get('/dataprodi', function () {
+    return view('dataprodi');
+});
+Route::get('/editprodi', function () {
+    return view('editprodi');
+});
+Route::get('/tambahprodi', function () {
+    return view('tambahprodi');
+});
+
+
+//Route datakelas
+Route::get('/datakelas', function () {
+    return view('datakelas');
+});
+Route::get('/editkelas', function () {
+    return view('editkelas');
+});
+Route::get('/tambahkelas', function () {
+    return view('tambahkelas');
+});
+
 
 Route::resource('login', LoginController::class);
 

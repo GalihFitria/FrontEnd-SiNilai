@@ -9,12 +9,6 @@
 </head>
 
 <body class="bg-gray-100">
-    <!-- Navbar -->
-    <!-- <header class="bg-white shadow-md p-4 flex items-center justify-between">
-        <button class="text-2xl p-2" onclick="toggleSidebar()">☰</button>
-        <h1 class="text-xl font-bold">Sistem Pengelolaan Nilai Mahasiswa</h1>
-    </header> -->
-
     <div class="flex">
         <!-- Sidebar -->
         <aside id="sidebar" class="w-64 bg-blue-700 min-h-screen text-white p-4">
@@ -29,7 +23,7 @@
 
                     <!-- Pengolahan Data dengan Dropdown -->
                     <li class="mb-4 relative">
-                        <button onclick="toggleDropdown()" class="w-full flex items-center justify-between text-white font-semibold hover:bg-blue-800 p-2 rounded">
+                        <button id="dropdownButton" class="w-full flex items-center justify-between text-white font-semibold hover:bg-blue-800 p-2 rounded">
                             📊 Pengolahan Data
                             <span id="arrow">▼</span>
                         </button>
@@ -37,7 +31,22 @@
                         <!-- Dropdown Menu -->
                         <ul id="dropdown" class="hidden bg-blue-600 mt-2 rounded-lg">
                             <li>
-                                <a href="penilaian" class="block px-4 py-2 hover:bg-blue-700">📑 Penilaian</a>
+                                <a href="datadosen" class="block px-4 py-2 hover:bg-blue-700"> Data Dosen</a>
+                            </li>
+                            <li>
+                                <a href="datamahasiswa" class="block px-4 py-2 hover:bg-blue-700"> Data Mahasiswa</a>
+                            </li>
+                            <li>
+                                <a href="matakuliah" class="block px-4 py-2 hover:bg-blue-700"> Data Mata Kuliah</a>
+                            </li>
+                            <li>
+                                <a href="" class="block px-4 py-2 hover:bg-blue-700"> Data Prodi</a>
+                            </li>
+                            <li>
+                                <a href="" class="block px-4 py-2 hover:bg-blue-700"> Data Kelas</a>
+                            </li>
+                            <li>
+                                <a href="penilaian" class="block px-4 py-2 hover:bg-blue-700"> Penilaian</a>
                             </li>
                         </ul>
                     </li>
@@ -45,7 +54,7 @@
                     <!-- Logout Button -->
                     <li>
                         <a href="login" onclick="openLogoutModal(event)" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
-                            🔌 Log Out
+                            🔐 Log Out
                         </a>
                     </li>
                 </ul>
@@ -54,9 +63,7 @@
 
         <!-- Content -->
         <main class="flex-1 p-6">
-            <!-- <div class="bg-white shadow-md p-4 rounded-lg"> -->
-                <h2 class="text-xl font-bold">Dashboard</h2>
-            <!-- </div> -->
+            <h2 class="text-xl font-bold">Dashboard</h2>
 
             <!-- Notifikasi Selamat Datang -->
             <div class="bg-green-200 text-green-800 p-4 rounded-lg mt-4">
@@ -102,17 +109,30 @@
     </div>
 
     <script>
-        function toggleDropdown() {
+        document.addEventListener("DOMContentLoaded", function() {
             let dropdown = document.getElementById("dropdown");
             let arrow = document.getElementById("arrow");
-            if (dropdown.classList.contains("hidden")) {
-                dropdown.classList.remove("hidden");
-                arrow.innerHTML = "▲";
-            } else {
-                dropdown.classList.add("hidden");
-                arrow.innerHTML = "▼";
-            }
-        }
+            let dropdownButton = document.getElementById("dropdownButton");
+
+            dropdownButton.addEventListener("click", function(event) {
+                event.stopPropagation(); // Mencegah event bubbling
+                dropdown.classList.toggle("hidden");
+                arrow.innerHTML = dropdown.classList.contains("hidden") ? "▼" : "▲";
+            });
+
+            // Mencegah dropdown menutup saat klik pada item di dalamnya
+            dropdown.addEventListener("click", function(event) {
+                event.stopPropagation();
+            });
+
+            // Menutup dropdown jika klik di luar dropdown
+            document.addEventListener("click", function() {
+                if (!dropdown.classList.contains("hidden")) {
+                    dropdown.classList.add("hidden");
+                    arrow.innerHTML = "▼";
+                }
+            });
+        });
 
         function openLogoutModal(event) {
             event.preventDefault();
@@ -125,15 +145,6 @@
 
         function confirmLogout() {
             window.location.href = "login";
-        }
-
-        function toggleSidebar() {
-            let sidebar = document.getElementById("sidebar");
-            if (sidebar.classList.contains("hidden")) {
-                sidebar.classList.remove("hidden");
-            } else {
-                sidebar.classList.add("hidden");
-            }
         }
     </script>
 </body>

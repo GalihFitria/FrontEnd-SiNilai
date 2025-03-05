@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Dosen</title>
+    <title>cetak KHS</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100" data-page="penilaian">
+<body class="bg-gray-100" data-page="cetakKHS">
     <div class="flex">
         <!-- Sidebar -->
         <aside class="w-64 bg-blue-700 min-h-screen text-white p-4">
@@ -16,7 +16,7 @@
             <nav>
                 <ul>
                     <li class="mb-4">
-                        <a href="dashboard_dosen" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
+                        <a href="dashboard_mahasiswa" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
                             🏠 Dashboard
                         </a>
                     </li>
@@ -26,12 +26,7 @@
                             <span id="arrow">▼</span>
                         </button>
                         <ul id="dropdown-menu" class="hidden bg-blue-600 mt-2 rounded-lg">
-                            <li><a href="datadosen" class="block px-4 py-2 hover:bg-blue-700">Data Dosen</a></li>
-                            <li><a href="datamahasiswa" class="block px-4 py-2 hover:bg-blue-700">Data Mahasiswa</a></li>
-                            <li><a href="matakuliah" class="block px-4 py-2 hover:bg-blue-700">Data Mata Kuliah</a></li>
-                            <li><a href="dataprodi" class="block px-4 py-2 hover:bg-blue-700">Data Prodi</a></li>
-                            <li><a href="datakelas" class="block px-4 py-2 hover:bg-blue-700">Data Kelas</a></li>
-                            <li><a href="penilaian" class="block px-4 py-2 hover:bg-blue-700 active-link">Penilaian</a></li>
+                            <li><a href="cetakKHS" class="block px-4 py-2 hover:bg-blue-700 active-link">cetak KHS</a></li>
                         </ul>
                     </li>
                     <li>
@@ -45,41 +40,29 @@
 
         <!-- Content -->
         <main class="flex-1 p-6">
-            <h2 class="text-xl font-bold">Data Penilaian</h2>
+            <h2 class=" text-xl font-bold">Cetak KHS</h2>
             <div class="bg-white shadow-md p-4 rounded-lg mt-4">
-                <a href="tambahdata" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah Data</a>
+                <a href="tambahdosen" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah Data</a>
                 <table class="w-full mt-4 border-collapse border border-gray-300">
-                    <thead>
+                    <!-- <thead>
                         <tr class="bg-gray-200">
                             <th class="border p-2">No.</th>
-                            <th class="border p-2">NIM</th>
                             <th class="border p-2">NIDN</th>
-                            <th class="border p-2">Kode Matkul</th>
-                            <th class="border p-2">Tugas</th>
-                            <th class="border p-2">UTS</th>
-                            <th class="border p-2">UAS</th>
-                            <th class="border p-2">Nilai Akhir</th>
-                            <th class="border p-2">Status</th>
+                            <th class="border p-2">Nama Dosen</th>
                             <th class="border p-2">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="border p-2 text-center">1</td>
-                            <td class="border p-2">230302060</td>
-                            <td class="border p-2">1234567890</td>
-                            <td class="border p-2">0302</td>
-                            <td class="border p-2">90</td>
-                            <td class="border p-2">80</td>
-                            <td class="border p-2">70</td>
-                            <td class="border p-2">88</td>
-                            <td class="border p-2">Lulus</td>
+                            <td class="border p-2">12334567890</td>
+                            <td class="border p-2">Galih Fitria Fijaf,S.Kom</td>
                             <td class="border p-2 text-center">
-                                <a href="edit" class="text-blue-500 hover:underline">✏️</a> |
-                                <a href="penilaian" onclick="openDeleteModal(event, this)" class="text-red-500 hover:underline">🗑️</a>
+                                <a href="editdosen" class="text-blue-500 hover:underline">✏️</a> |
+                                <a href="datadosen" onclick="openDeleteModal(event, this)" class="text-red-500 hover:underline">🗑️</a>
                             </td>
                         </tr>
-                    </tbody>
+                    </tbody> -->
                 </table>
             </div>
         </main>
@@ -98,7 +81,7 @@
 
 
     <!-- Delete Confirmation Modal -->
-    <div id="deleteModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+    <!-- <div id="deleteModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
             <h2 class="text-lg font-bold mb-4">Konfirmasi Hapus</h2>
             <p>Apakah Anda yakin ingin menghapus data ini?</p>
@@ -107,7 +90,7 @@
                 <button onclick="closeDeleteModal()" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Batal</button>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -117,7 +100,7 @@
             let arrow = document.getElementById("arrow");
             let activeLink = document.querySelector(`a[href='${currentPage}']`);
 
-            let pages = ["penilaian", "datadosen", "datamahasiswa", "datamatkul", "dataprodi", "datakelas"];
+            let pages = ["cetakKHS"];
 
             if (pages.includes(currentPage)) {
                 dropdownMenu.classList.remove("hidden");
@@ -152,26 +135,26 @@
             window.location.href = "login";
         }
 
-        let deleteElement = null; // Simpan elemen yang akan dihapus
+        // let deleteElement = null;
 
-        function openDeleteModal(event, element) {
-            event.preventDefault();
-            deleteElement = element.closest("tr"); // Menyimpan baris yang akan dihapus
-            document.getElementById("deleteModal").classList.remove("hidden");
-        }
+        // function openDeleteModal(event, element) {
+        //     event.preventDefault();
+        //     deleteElement = element.closest("tr");
+        //     document.getElementById("deleteModal").classList.remove("hidden");
+        // }
 
-        function closeDeleteModal() {
-            document.getElementById("deleteModal").classList.add("hidden");
-            deleteElement = null; // Reset elemen yang akan dihapus
-        }
+        // function closeDeleteModal() {
+        //     document.getElementById("deleteModal").classList.add("hidden");
+        //     deleteElement = null;
+        // }
 
-        function deleteData() {
-            if (deleteElement) {
-                deleteElement.remove(); // Hapus baris dari tabel
-                deleteElement = null; // Reset setelah dihapus
-            }
-            closeDeleteModal(); // Tutup modal setelah konfirmasi
-        }
+        // function deleteData() {
+        //     if (deleteElement) {
+        //         deleteElement.remove();
+        //         deleteElement = null;
+        //     }
+        //     closeDeleteModal();
+        // }
     </script>
 </body>
 

@@ -34,32 +34,56 @@
                     <label class="block">Nilai UAS</label>
                     <input type="number" class="border w-full p-2 mb-4 rounded">
 
-                    <a href="penilaian" class="block text-center bg-blue-500 text-white px-4 py-2 rounded w-full">
-                        Ubah Data
-                    </a>
+                    <div class="flex justify-center space-x-6 mt-4">
+                        <a href="penilaian" class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition duration-200 shadow-md">
+                            Batal
+                        </a>
+                        <button onclick="openConfirmModal()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200 shadow-md active:scale-95">
+                            Ubah Data
+                        </button>
+                    </div>
+                    <!-- Confirmation Modal -->
+                    <div id="confirmModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+                        <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+                            <h2 class="text-lg font-bold mb-4">Konfirmasi Perubahan</h2>
+                            <p>Apakah Anda yakin ingin mengubah data ini?</p>
+                            <div class="mt-4 flex justify-center space-x-4">
+                                <button onclick="showSuccessModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Ya, Ubah</button>
+                                <button onclick="closeConfirmModal()" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Batal</button>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Success Modal -->
+                    <div id="successModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+                        <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+                            <div class="flex justify-center items-center mb-4">
+                                <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500"></div>
+                            </div>
+                            <h2 class="text-lg font-bold mb-4">Data berhasil diubah!</h2>
+                            <a href="penilaian" onclick="closeSuccessModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">OK<a>
+                        </div>
+                    </div>
 
                     <script>
-                        function openEditModal(element) {
-                            let row = element.closest("tr");
-                            let cells = row.getElementsByTagName("td");
-
-                            document.getElementById("editNIDN").value = cells[2].innerText;
-                            document.getElementById("editKodeMatkul").value = cells[3].innerText;
-                            document.getElementById("editNilaiTugas").value = cells[4].innerText;
-                            document.getElementById("editNilaiUTS").value = cells[5].innerText;
-                            document.getElementById("editNilaiUAS").value = cells[6].innerText;
-
-                            document.getElementById("editModal").classList.remove("hidden");
+                        function openConfirmModal() {
+                            document.getElementById("confirmModal").classList.remove("hidden");
                         }
 
-                        function closeEditModal() {
-                            document.getElementById("editModal").classList.add("hidden");
+                        function closeConfirmModal() {
+                            document.getElementById("confirmModal").classList.add("hidden");
                         }
 
-                        function saveEditData() {
-                            alert("Data berhasil diubah!");
-                            closeEditModal();
+                        function showSuccessModal() {
+                            closeConfirmModal();
+                            document.getElementById("successModal").classList.remove("hidden");
+                            setTimeout(() => {
+                                document.querySelector(".animate-spin").classList.add("hidden");
+                            }, 1000);
+                        }
+
+                        function closeSuccessModal() {
+                            document.getElementById("successModal").classList.add("hidden");
                         }
                     </script>
         </body>
