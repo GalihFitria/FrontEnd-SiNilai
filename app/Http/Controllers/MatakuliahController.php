@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\matakuliah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class MatakuliahController extends Controller
 {
@@ -12,7 +13,15 @@ class MatakuliahController extends Controller
      */
     public function index()
     {
-        return view ('matakuliah');
+       
+        $response = Http::get('http://localhost:8080/matakuliah');
+
+        if ($response->successful()) {
+            $matkul = collect($response->json())->sortBy('kode_matkul')->values();
+            return view('Matakuliah', compact('matkul'));
+        } else {
+            return back()->with('error', 'Gagal mengambil data dosen');
+        }
     }
 
     /**

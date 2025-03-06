@@ -60,17 +60,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($matkul as $index => $matakuliah)
                         <tr>
-                            <td class="border p-2 text-center">1</td>
-                            <td class="border p-2">1342y4</td>
-                            <td class="border p-2">Praktikum Berbasis Framework</td>
-                            <td class="border p-2">4</td>
-                            <td class="border p-2">6</td>
+                            <td class="border p-2 text-center">{{ $index + 1 }}</td>
+                            <td class="border p-2">{{ $matakuliah['kode_matkul']}}</td>
+                            <td class="border p-2">{{ $matakuliah['nama_matkul']}}</td>
+                            <td class="border p-2">{{ $matakuliah['semester']}}</td>
+                            <td class="border p-2">{{ $matakuliah['sks']}}</td>
                             <td class="border p-2 text-center">
                                 <a href="editmatkul" class="text-blue-500 hover:underline">✏️</a> |
                                 <a href="matakuliah" onclick="openDeleteModal(event, this)" class="text-red-500 hover:underline">🗑️</a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

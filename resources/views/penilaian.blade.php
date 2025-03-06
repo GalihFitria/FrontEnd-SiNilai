@@ -63,6 +63,7 @@
                             <th class="border p-2">Aksi</th>
                         </tr>
                     </thead>
+                    
                     <tbody>
                         <tr>
                             <td class="border p-2 text-center">1</td>

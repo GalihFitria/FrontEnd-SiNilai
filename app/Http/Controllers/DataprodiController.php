@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\dataprodi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class DataprodiController extends Controller
 {
@@ -12,7 +13,15 @@ class DataprodiController extends Controller
      */
     public function index()
     {
-        return view ('dataprodi');
+        // return view ('dataprodi');
+        $response = Http::get('http://localhost:8080/prodi');
+
+        if ($response->successful()) {
+            $prodi = collect($response->json())->sortBy('id_prodi')->values();
+            return view('dataprodi', compact('prodi'));
+        } else {
+            return back()->with('error', 'Gagal mengambil data prodi');
+        }
     }
 
     /**

@@ -58,15 +58,17 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($kelas as $index => $k)
                         <tr>
-                            <td class="border p-2 text-center">1</td>
-                            <td class="border p-2">1ertr</td>
-                            <td class="border p-2">Informatika A</td>
+                            <td class="border p-2 text-center">{{ $index + 1 }}</td>
+                            <td class="border p-2">{{ $k['kode_kelas'] }}</td>
+                            <td class="border p-2">{{ $k['nama_kelas'] }}</td>
                             <td class="border p-2 text-center">
                                 <a href="editkelas" class="text-blue-500 hover:underline">✏️</a> |
                                 <a href="datakelas" onclick="openDeleteModal(event, this)" class="text-red-500 hover:underline">🗑️</a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -60,17 +60,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($mahasiswa as $index => $mhs)
+
                         <tr>
-                            <td class="border p-2 text-center">1</td>
-                            <td class="border p-2">230302060</td>
-                            <td class="border p-2">Galih Fitria </td>
-                            <td class="border p-2">TI01</td>
-                            <td class="border p-2">JKB009</td>
+                            <td class="border p-2 text-center">{{ $index + 1 }}</td>
+                            <td class="border p-2">{{ $mhs['npm']}}</td>
+                            <td class="border p-2">{{ $mhs['nama_mhs']}}</td>
+                            <td class="border p-2">{{ $mhs['kode_kelas']}}</td>
+                            <td class="border p-2">{{ $mhs['id_prodi']}}</td>
                             <td class="border p-2 text-center">
                                 <a href="editmahasiswa" class="text-blue-500 hover:underline">✏️</a> |
                                 <a href="datamahasiswa" onclick="openDeleteModal(event, this)" class="text-red-500 hover:underline">🗑️</a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

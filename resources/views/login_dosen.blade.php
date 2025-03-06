@@ -15,14 +15,13 @@
         <p class="text-left text-gray-600 mt-1"><b>Selamat Datang di SiNilai!</b></p>
         <p class="text-left text-gray-500 mb-4">Silahkan masuk ke akun anda.</p>
 
-        <form action="dashboard_dosen" method="GET">
+        <form onsubmit="return validateLogin(event)">
             @csrf
             <label class="block text-gray-700 font-semibold">USERNAME</label>
-            <input type="text" name="username" placeholder="Masukkan username anda" required class="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none">
+            <input type="text" id="username" name="username" placeholder="Masukkan username anda" required class="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none">
 
             <label class="block text-gray-700 font-semibold mt-3">KATA SANDI</label>
-            <input type="password" name="password" placeholder="Masukkan password anda" required class="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none">
-
+            <input type="password" id="password" name="password" placeholder="Masukkan password anda" required class="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none">
 
             <div class="flex items-center justify-between mt-2">
                 <label class="flex items-center">
@@ -32,12 +31,36 @@
                 <a href="" class="text-sm text-blue-600 hover:underline">Lupa Kata Sandi?</a>
             </div>
 
+            <p id="error-message" class="text-red-600 text-sm mt-2 hidden">Username atau password salah!</p>
+
             <button type="submit" class="w-48 bg-blue-600 text-white py-2 rounded-lg mt-4 hover:bg-blue-700 transition mx-auto block">
                 <b>Login</b>
             </button>
         </form>
 
     </div>
+
+    <script>
+        function validateLogin(event) {
+            event.preventDefault(); // Mencegah form reload halaman
+
+            // Username dan Password yang Valid
+            const validUsername = "dosen123";
+            const validPassword = "123456";
+
+            // Ambil Input User
+            const inputUsername = document.getElementById("username").value;
+            const inputPassword = document.getElementById("password").value;
+
+            // Cek apakah username dan password sesuai
+            if (inputUsername === validUsername && inputPassword === validPassword) {
+                // alert("Login berhasil!");
+                window.location.href = "dashboard_dosen"; // Redirect ke halaman dashboard
+            } else {
+                document.getElementById("error-message").classList.remove("hidden");
+            }
+        }
+    </script>
 
 </body>
 

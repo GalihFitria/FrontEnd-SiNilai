@@ -57,16 +57,19 @@
                             <th class="border p-2">Aksi</th>
                         </tr>
                     </thead>
+
                     <tbody>
+                        @foreach($dosen as $index => $d)
                         <tr>
-                            <td class="border p-2 text-center">1</td>
-                            <td class="border p-2">12334567890</td>
-                            <td class="border p-2">Galih Fitria Fijaf,S.Kom</td>
+                            <td class="border p-2 text-center">{{ $index + 1 }}</td> <!-- Nomor otomatis -->
+                            <td class="border p-2">{{ $d['nidn'] }}</td>
+                            <td class="border p-2">{{ $d['nama_dosen'] }}</td>
                             <td class="border p-2 text-center">
                                 <a href="editdosen" class="text-blue-500 hover:underline">✏️</a> |
                                 <a href="datadosen" onclick="openDeleteModal(event, this)" class="text-red-500 hover:underline">🗑️</a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

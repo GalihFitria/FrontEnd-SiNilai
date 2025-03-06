@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\datakelas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class DatakelasController extends Controller
 {
@@ -12,7 +13,15 @@ class DatakelasController extends Controller
      */
     public function index()
     {
-        return view('datakelas');
+        // return view('datakelas');
+        $response = Http::get('http://localhost:8080/kelas');
+
+        if ($response->successful()) {
+            $kelas = collect($response->json())->sortBy('kode_kelas')->values();
+            return view('datakelas', compact('kelas'));
+        } else {
+            return back()->with('error', 'Gagal mengambil data kelas');
+        }
     }
 
     /**

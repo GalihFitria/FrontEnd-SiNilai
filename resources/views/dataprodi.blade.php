@@ -57,16 +57,19 @@
                             <th class="border p-2">Aksi</th>
                         </tr>
                     </thead>
+
                     <tbody>
+                        @foreach($prodi as $index => $p)
                         <tr>
-                            <td class="border p-2 text-center">1</td>
-                            <td class="border p-2">1</td>
-                            <td class="border p-2">D3 Teknik Informatika</td>
+                            <td class="border p-2 text-center">{{ $index + 1 }}</td>
+                            <td class="border p-2">{{ $p['id_prodi'] }}</td>
+                            <td class="border p-2">{{ $p['nama_prodi'] }}</td>
                             <td class="border p-2 text-center">
                                 <a href="editprodi" class="text-blue-500 hover:underline">✏️</a> |
                                 <a href="dataprodi" onclick="openDeleteModal(event, this)" class="text-red-500 hover:underline">🗑️</a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

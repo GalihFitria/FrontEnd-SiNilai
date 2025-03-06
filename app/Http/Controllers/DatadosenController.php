@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\datadosen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class DatadosenController extends Controller
 {
@@ -12,8 +13,17 @@ class DatadosenController extends Controller
      */
     public function index()
     {
-        return view ('datadosen');
+        // return view ('datadosen');
+        $response = Http::get('http://localhost:8080/dosen');
+
+        if ($response->successful()) {
+            $dosen = collect($response->json())->sortBy('nidn')->values();
+            return view('datadosen', compact('dosen'));
+        } else {
+            return back()->with('error', 'Gagal mengambil data dosen');
+        }
     }
+
 
     /**
      * Show the form for creating a new resource.

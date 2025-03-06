@@ -7,6 +7,11 @@ use App\Http\Controllers\LoginDosenController;
 use App\Http\Controllers\LoginMahasiswaController;
 use App\Http\Controllers\OrangController;
 use App\Http\Controllers\DashboardDosenController;
+use App\Http\Controllers\DatadosenController;
+use App\Http\Controllers\DatakelasController;
+use App\Http\Controllers\DatamahasiswaController;
+use App\Http\Controllers\DataprodiController;
+use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\TambahdataController;
 use App\Models\penilaian;
@@ -52,9 +57,10 @@ Route::get('/edit', function () {
 });
 
 //Route Data Dosen
-Route::get('/datadosen', function () {
-    return view('datadosen');
-});
+// Route::get('/datadosen', function () {
+//     return view('datadosen');
+// });
+Route::get('/datadosen', [DatadosenController::class, 'index']);
 Route::get('/editdosen', function () {
     return view('editdosen');
 });
@@ -62,11 +68,20 @@ Route::get('/tambahdosen', function () {
     return view('tambahdosen');
 });
 
+use App\Http\Controllers\TambahdosenController;
+
+// Route Data Dosen
+// Route::get('/datadosen', [TambahdosenController::class, 'show'])->name('datadosen');
+// Route::get('/tambahdosen', [TambahdosenController::class, 'index'])->name('tambahdosen');
+// Route::post('/tambahdosen', [TambahdosenController::class, 'store'])->name('tambahdosen.store');
+// Route::delete('/datadosen/{id}', [TambahdosenController::class, 'destroy'])->name('datadosen.destroy');
+
 
 //return Data mahasiswa
-Route::get('/datamahasiswa', function () {
-    return view('datamahasiswa');
-});
+Route::get('/datamahasiswa', [DatamahasiswaController::class, 'index']);
+// Route::get('/datamahasiswa', function () {
+//     return view('datamahasiswa');
+// });
 Route::get('/editmahasiswa', function () {
     return view('editmahasiswa');
 });
@@ -76,9 +91,8 @@ Route::get('/tambahmahasiswa', function () {
 
 
 //route matkul
-Route::get('/matakuliah', function () {
-    return view('matakuliah');
-});
+Route::get('/matakuliah', [MatakuliahController::class, 'index']);
+
 Route::get('/editmatkul', function () {
     return view('editmatkul');
 });
@@ -87,9 +101,8 @@ Route::get('/tambahmatkul', function () {
 });
 
 //Route Prodi
-Route::get('/dataprodi', function () {
-    return view('dataprodi');
-});
+Route::get('/dataprodi', [DataprodiController::class, 'index']);
+
 Route::get('/editprodi', function () {
     return view('editprodi');
 });
@@ -99,9 +112,8 @@ Route::get('/tambahprodi', function () {
 
 
 //Route datakelas
-Route::get('/datakelas', function () {
-    return view('datakelas');
-});
+Route::get('/datakelas', [DatakelasController::class, 'index']);
+
 Route::get('/editkelas', function () {
     return view('editkelas');
 });

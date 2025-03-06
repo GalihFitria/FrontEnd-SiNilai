@@ -11,10 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('tambahdosens', function (Blueprint $table) {
             $table->id();
+            $table->string('nidn')->unique(); // NIDN unik
+            $table->string('nama_dosen'); // Nama dosen
             $table->timestamps();
         });
+
+        // Schema::create('tambahdosens', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->timestamps();
+        // });
     }
 
     /**
