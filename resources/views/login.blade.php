@@ -10,8 +10,14 @@
 
 <body class="bg-blue-100 flex items-center justify-center h-screen">
     <div class="text-center">
-        <h1 class="text-6xl font-bold text-gray-800 font-serif">Selamat Datang</h1><br>
-        <h2 class="text-4xl font-semibold text-blue-600 mt-2 font-serif">di Sistem Pengelolaan Nilai Mahasiswa</h2><br>
+        <!-- Tambahkan link Google Font di head -->
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+        <h1 class="text-6xl font-bold text-gray-800 mt-4" style="font-family: 'Playfair Display', serif;">Selamat Datang</h1>
+        <br>
+        <h2 class="text-4xl font-semibold text-blue-600 mt-2" style="font-family: 'Poppins', sans-serif;">di Sistem Pengelolaan Nilai Mahasiswa</h2>
+        <br>
+
 
         <div class="flex justify-center gap-10 mt-8">
 

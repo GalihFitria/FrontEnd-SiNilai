@@ -12,7 +12,8 @@
     <div class="flex">
         <!-- Sidebar -->
         <aside class="w-64 bg-blue-700 min-h-screen text-white p-4">
-            <h1 class="text-center text-2xl font-bold mb-6">SiNilai</h1>
+            <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+            <h1 class="text-center text-4xl font-bold mb-6" style="font-family: 'Lobster', cursive;">Si Nilai</h1>
             <nav>
                 <ul>
                     <li class="mb-4">
@@ -34,20 +35,17 @@
                             <li><a href="penilaian" class="block px-4 py-2 hover:bg-blue-700 active-link">Penilaian</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="login" onclick="openLogoutModal(event)" class="w-full flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
-                            🔐 Log Out
-                        </a>
-                    </li>
                 </ul>
             </nav>
         </aside>
 
         <!-- Content -->
         <main class="flex-1 p-6">
-            <h2 class="text-xl font-bold">Data Penilaian</h2>
+            <h2 class="text-2xl font-bold">Data Nilai Mahasiswa</h2>
             <div class="bg-white shadow-md p-4 rounded-lg mt-4">
-                <a href="tambahdata" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah Data</a>
+                <div class="flex justify-between mb-4">
+                    <a href="tambahdata" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah Data</a>
+                </div>
                 <table class="w-full mt-4 border-collapse border border-gray-300">
                     <thead>
                         <tr class="bg-gray-200">
@@ -79,8 +77,8 @@
                             <td class="border p-2">{{ $n['nilai_akhir']}}</td>
                             <td class="border p-2">{{ $n['status']}}</td>
                             <td class="border p-2 text-center">
-                                <a href="edit" class="text-blue-500 hover:underline">✏️</a> |
-                                <a href="penilaian" onclick="openDeleteModal(event, this)" class="text-red-500 hover:underline">🗑️</a>
+                                <a href="edit" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
+                                <button onclick="openDeleteModal(event, this)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Hapus</button>
                             </td>
                         </tr>
                         @endforeach
@@ -89,18 +87,6 @@
             </div>
         </main>
     </div>
-
-    <div id="logoutModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
-            <h2 class="text-lg font-bold mb-4">Konfirmasi Logout</h2>
-            <p>Apakah Anda yakin ingin logout?</p>
-            <div class="mt-4 flex justify-center space-x-4">
-                <button onclick="confirmLogout()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Ya, Logout</button>
-                <button onclick="closeLogoutModal()" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Batal</button>
-            </div>
-        </div>
-    </div>
-
 
     <!-- Delete Confirmation Modal -->
     <div id="deleteModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">

@@ -59,6 +59,7 @@ Route::get('/edit', function () {
 //     return view('datadosen');
 // });
 Route::get('/datadosen', [DatadosenController::class, 'index']);
+
 Route::get('/editdosen', function () {
     return view('editdosen');
 });
