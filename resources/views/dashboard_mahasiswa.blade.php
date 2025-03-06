@@ -64,7 +64,7 @@
                     <label class="block font-semibold">Program Studi</label>
                     <input type="text" class="border p-2 w-1/2 rounded mt-1" placeholder="Masukkan Program Studi">
                 </div>
-                <button class="bg-green-500 text-white p-2 mt-4 rounded hover:bg-green-600">📝 Lihat KHS</button>
+                <!-- <button class="bg-green-500 text-white p-2 mt-4 rounded hover:bg-green-600">📝 Lihat KHS</button> -->
 
                 <table class="w-full border mt-4 text-center">
                     <thead>

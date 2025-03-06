@@ -51,6 +51,7 @@
                 <table class="w-full mt-4 border-collapse border border-gray-300">
                     <thead>
                         <tr class="bg-gray-200">
+                            <th class="border p-2">No</th>
                             <th class="border p-2">Id Nilai</th>
                             <th class="border p-2">NPM</th>
                             <th class="border p-2">Kode Matkul</th>
@@ -63,23 +64,26 @@
                             <th class="border p-2">Aksi</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody>
+                        @foreach($nilai as $index => $n)
                         <tr>
-                            <td class="border p-2 text-center">1</td>
-                            <td class="border p-2">230302060</td>
-                            <td class="border p-2">1234567890</td>
-                            <td class="border p-2">0302</td>
-                            <td class="border p-2">90</td>
-                            <td class="border p-2">80</td>
-                            <td class="border p-2">70</td>
-                            <td class="border p-2">88</td>
-                            <td class="border p-2">Lulus</td>
+                            <td class="border p-2 text-center">{{ $index + 1 }}</td>
+                            <td class="border p-2">{{ $n['id_nilai']}}</td>
+                            <td class="border p-2">{{ $n['npm']}}</td>
+                            <td class="border p-2">{{ $n['kode_matkul']}}</td>
+                            <td class="border p-2">{{ $n['nidn']}}</td>
+                            <td class="border p-2">{{ $n['tugas']}}</td>
+                            <td class="border p-2">{{ $n['uts']}}</td>
+                            <td class="border p-2">{{ $n['uas']}}</td>
+                            <td class="border p-2">{{ $n['nilai_akhir']}}</td>
+                            <td class="border p-2">{{ $n['status']}}</td>
                             <td class="border p-2 text-center">
                                 <a href="edit" class="text-blue-500 hover:underline">✏️</a> |
                                 <a href="penilaian" onclick="openDeleteModal(event, this)" class="text-red-500 hover:underline">🗑️</a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

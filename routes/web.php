@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 //Router Dashboard
@@ -46,9 +46,7 @@ Route::get('/cetakKHS', function () {
 
 
 //Route Penilaian
-Route::get('/penilaian', function () {
-    return view('penilaian');
-});
+Route::get('/penilaian', [PenilaianController::class, 'index']);
 Route::get('/tambahdata', function () {
     return view('tambahdata');
 });
@@ -67,6 +65,7 @@ Route::get('/editdosen', function () {
 Route::get('/tambahdosen', function () {
     return view('tambahdosen');
 });
+//  Route::get('/tambahdosen', [TambahdosenController::class, 'index']);
 
 use App\Http\Controllers\TambahdosenController;
 

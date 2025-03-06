@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\penilaian;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PenilaianController extends Controller
 {
@@ -12,7 +13,15 @@ class PenilaianController extends Controller
      */
     public function index()
     {
-        return view ('penilaian');
+        // return view ('penilaian');
+        $response = Http::get('http://localhost:8080/nilai');
+
+        if ($response->successful()) {
+            $nilai = collect($response->json())->sortBy('id_nilai')->values();
+            return view('penilaian', compact('nilai'));
+        } else {
+            return back()->with('error', 'Gagal mengambil data dosen');
+        }
     }
 
     /**

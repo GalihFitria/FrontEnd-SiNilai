@@ -57,7 +57,6 @@
                             <th class="border p-2">Aksi</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         @foreach($dosen as $index => $d)
                         <tr>
