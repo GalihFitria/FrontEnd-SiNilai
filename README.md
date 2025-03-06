@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Laravel
 
 Laravel adalah framework PHP berbasis MVC (Model-View-Controller) yang dirancang untuk memudahkan pengembangan aplikasi web dengan sintaks yang elegan dan ekspresif. Laravel menyediakan berbagai fitur seperti routing, middleware, templating engine (Blade), ORM (Eloquent), sistem migrasi database, dan keamanan bawaan yang kuat.
 
