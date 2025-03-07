@@ -26,7 +26,7 @@ Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
   
 **3. Membuat File baru**
 - langsung membuat file yang berisikan model,migration,controller dan resource
-- 
+ 
   `php artisan make:model DataDosen -mcr`
   
   setelah menjalankan perintah tersebut, Laravel akan menghasilkan:
