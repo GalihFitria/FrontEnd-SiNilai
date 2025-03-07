@@ -12,11 +12,17 @@
 Laravel adalah framework PHP berbasis MVC (Model-View-Controller) yang dirancang untuk memudahkan pengembangan aplikasi web dengan sintaks yang elegan dan ekspresif. Laravel menyediakan berbagai fitur seperti routing, middleware, templating engine (Blade), ORM (Eloquent), sistem migrasi database, dan keamanan bawaan yang kuat.
 
 
-## Deskripsi
-
-Project ini adalah frontend dari aplikasi berbasis Laravel. Dibangun menggunakan Laravel untuk mengelola tampilan dan interaksi dengan backend.
-
-
+## 📦 Instalasi Laravel dengan Laragon
+**1. Pastikan Prasyarat Terpenuhi**
+Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
+- Laragon (https://laragon.org/download/)
+- PHP ≥ 8.0 (termasuk dalam Laragon)
+- Composer (termasuk dalam Laragon)
+- MySQL (dapat menggunakan database bawaan Laragon)**
+**2. Instal Laravel dengan Laragon**
+- Buka Laragon, lalu klik Kanan → Quick App → Laravel
+- Atau jalankan perintah di terminal Laragon:
+  ''laravel new nama_proyek''
 ## Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
