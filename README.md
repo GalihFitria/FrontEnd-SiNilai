@@ -54,7 +54,7 @@ Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
 # Postman 🌐
 Postman adalah alat yang digunakan untuk menguji API dengan mudah, memungkinkan pengembang untuk mengirim permintaan HTTP, melihat respons, dan melakukan debugging.
 **Berikut langkah-langkah menggunakan Postman untuk menguji API yang dikirim dari backend (Laravel):**
-1. Unduh dan instal postman.com
+1. Unduh dan instal (https://www.postman.com/downloads/)
 2. Pastikan server Backend dan Frontend berjalan
    
    `php spark serve`
