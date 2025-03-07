@@ -58,12 +58,10 @@ Postman adalah alat yang digunakan untuk menguji API dengan mudah, memungkinkan 
 2. Pastikan server Backend dan Frontend berjalan
    
    `php spark serve`
-   
-dan
 
    `php artisan serve`
 
 3. Uji API di `routes/web.php`
 
-`Route::get('/users', [UserController::class, 'index']);
-Route::post('/users', [UserController::class, 'store']);`
+   `Route::get('/users', [UserController::class, 'index']);
+    Route::post('/users', [UserController::class, 'store']);`
