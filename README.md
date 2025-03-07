@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Laravel
+### Laravel
 
 Laravel adalah framework PHP berbasis MVC (Model-View-Controller) yang dirancang untuk memudahkan pengembangan aplikasi web dengan sintaks yang elegan dan ekspresif. Laravel menyediakan berbagai fitur seperti routing, middleware, templating engine (Blade), ORM (Eloquent), sistem migrasi database, dan keamanan bawaan yang kuat.
 
@@ -22,9 +22,7 @@ Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
   
 **2. Instal Laravel dengan Laragon**
 - Buka Laragon, lalu klik Kanan → Quick App → Laravel
-- Atau jalankan perintah di terminal Laragon:
-  
-  `laravel new nama_proyek`
+- Atau jalankan perintah di terminal Laragon: `laravel new nama_proyek`
   
 **3. Membuat File baru**
 - langsung membuat file yang berisikan model,migration,controller dan resource
@@ -34,7 +32,7 @@ Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
   2. Migration → `database/migration/xxxx_xx_xx_xxxxxx_create_datadosens_table.php`
   3. Contoller → `app/Http/Controllers/DataDosenController.php'
 - Membuat file view
-  
+
   `php artisan make:view DataDosen`
 
   akan menghasilkan nama file `DataDosen.blade.php`
@@ -43,7 +41,9 @@ Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
 - Masuk ke direktori proyek Laravel dan jalankan diterminal:
   
   `php artisan serve`
-## Laravel Sponsors
+  Akses aplikasi melalui browser di `http://127.0.0.1:8000`
+  
+## 
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
