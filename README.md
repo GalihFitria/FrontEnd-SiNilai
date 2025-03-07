@@ -18,11 +18,12 @@ Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
 - Laragon (https://laragon.org/download/)
 - PHP ≥ 8.0 (termasuk dalam Laragon)
 - Composer (termasuk dalam Laragon)
-- MySQL (dapat menggunakan database bawaan Laragon)**
+- MySQL (dapat menggunakan database bawaan Laragon)
+  
 **2. Instal Laravel dengan Laragon**
 - Buka Laragon, lalu klik Kanan → Quick App → Laravel
 - Atau jalankan perintah di terminal Laragon:
-  ''laravel new nama_proyek''
+  'laravel new nama_proyek'
 ## Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
