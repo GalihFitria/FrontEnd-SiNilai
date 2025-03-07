@@ -61,7 +61,18 @@ Postman adalah alat yang digunakan untuk menguji API dengan mudah, memungkinkan 
 
    `php artisan serve`
 
-3. Uji API di `routes/web.php`
+3. Import File Postman yang telah dikirim dari backend 
+4. Uji API di `routes/web.php`
 
    `Route::get('/users', [UserController::class, 'index']);
     Route::post('/users', [UserController::class, 'store']);`
+
+## Mengirimkan Permintaan GET (Menampilkan Data)
+1. Buka Postman
+2. Pilih Metode GET
+3. Masukkan URL API (jika postman tersebut sudah dari backend maka untuk URL otomatis sudah ada)
+
+   `http://127.0.0.1:8000/api/users`
+
+4. Klik Send
+5. Jika berhasil, akan muncul data dari API dalam format JSON
