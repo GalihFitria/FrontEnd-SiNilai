@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# Laravel
+# Laravel 🔥🔥🔥
 
 Laravel adalah framework PHP berbasis MVC (Model-View-Controller) yang dirancang untuk memudahkan pengembangan aplikasi web dengan sintaks yang elegan dan ekspresif. Laravel menyediakan berbagai fitur seperti routing, middleware, templating engine (Blade), ORM (Eloquent), sistem migrasi database, dan keamanan bawaan yang kuat.
 
@@ -43,7 +43,8 @@ Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
   `php artisan serve`
   Akses aplikasi melalui browser di `http://127.0.0.1:8000`
   
-## 
+## 🚀 Struktur Folder Laravel
+-- app/ : Berisi kode utama aplikasi
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
