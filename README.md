@@ -33,6 +33,7 @@ Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
   1. Model → `app/Models/DataDosen.php`
   2. Migration → `database/migration/xxxx_xx_xx_xxxxxx_create_datadosens_table.php`
   3. Contoller →  `app/Http/Controllers/DataDosenController.php'
+    
 - Membuat file view
 
   `php artisan make:view DataDosen`
