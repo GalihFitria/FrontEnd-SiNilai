@@ -24,6 +24,10 @@ Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
 - Buka Laragon, lalu klik Kanan → Quick App → Laravel
 - Atau jalankan perintah di terminal Laragon:
   'laravel new nama_proyek'
+
+**3. Menjalankan Server Laravel**
+- Masuk ke direktori proyek Laravel dan jalankan diterminal:
+  'php artisan serve'
 ## Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
