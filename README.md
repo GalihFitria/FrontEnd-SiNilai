@@ -44,11 +44,15 @@ Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
   Akses aplikasi melalui browser di `http://127.0.0.1:8000`
   
 ## 🚀 Struktur Folder Laravel
--- app/ : Berisi kode utama aplikasi
+- `app/` : Berisi kode utama aplikasi
+- `routes/` : Berisi file routing (web.php, api.php)
+- `database/` : Berisi migrasi, seeder, dan model factory
+- `resources/views/` : Berisi file Blade untuk tampilan UI
+- `config/` : Berisi file konfigurasi aplikasi
+- `.env` : File konfigurasi lingkungan (database, cache, dll.)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
+# Postman
+Postman adalah alat yang digunakan untuk menguji API dengan mudah, memungkinkan pengembang untuk mengirim permintaan HTTP, melihat respons, dan melakukan debugging.
 
 - **[Vehikl](https://vehikl.com/)**
 - **[Tighten Co.](https://tighten.co)**
