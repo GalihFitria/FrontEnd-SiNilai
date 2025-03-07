@@ -26,7 +26,9 @@ Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
   
 **3. Membuat File baru**
 - langsung membuat file yang berisikan model,migration,controller dan resource
+- 
   `php artisan make:model DataDosen -mcr`
+  
   setelah menjalankan perintah tersebut, Laravel akan menghasilkan:
   1. Model → `app/Models/DataDosen.php`
   2. Migration → `database/migration/xxxx_xx_xx_xxxxxx_create_datadosens_table.php`
@@ -64,8 +66,9 @@ Postman adalah alat yang digunakan untuk menguji API dengan mudah, memungkinkan 
 3. Import File Postman yang telah dikirim dari backend 
 4. Uji API di `routes/web.php`
 
-   `Route::get('/users', [UserController::class, 'index']);
-    Route::post('/users', [UserController::class, 'store']);`
+   `Route::get('/users', [UserController::class, 'index']);`
+   
+    `Route::post('/users', [UserController::class, 'store']);`
 
 ## Mengirimkan Permintaan GET (Menampilkan Data)
 1. Buka Postman
