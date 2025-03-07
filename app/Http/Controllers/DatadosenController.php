@@ -30,7 +30,8 @@ class DatadosenController extends Controller
      */
     public function create()
     {
-        //
+        return view ('tambahdosen');
+
     }
 
     /**
@@ -38,7 +39,22 @@ class DatadosenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nidn' => 'required|unique:dosen,nidn',
+            'nama_dosen' => 'required'
+
+
+
+        ]);
+
+        Datadosen::create([
+            'nidn' => $request->nidn,
+            'nama_dosen' => $request->nama
+
+        ]);
+
+        return response()->json(['success' => true
+        ]);
     }
 
     /**

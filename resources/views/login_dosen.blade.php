@@ -42,17 +42,17 @@
 
     <script>
         function validateLogin(event) {
-            event.preventDefault(); // Mencegah form reload halaman
+            event.preventDefault(); 
 
-            // Username dan Password yang Valid
+            
             const validUsername = "dosen123";
             const validPassword = "123456";
 
-            // Ambil Input User
+            
             const inputUsername = document.getElementById("username").value;
             const inputPassword = document.getElementById("password").value;
 
-            // Cek apakah username dan password sesuai
+            //
             if (inputUsername === validUsername && inputPassword === validPassword) {
                 // alert("Login berhasil!");
                 window.location.href = "dashboard_dosen"; // Redirect ke halaman dashboard

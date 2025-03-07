@@ -13,9 +13,16 @@ class TambahdosenController extends Controller
      */
     public function index()
     {
-        return view ('tambahdosen');
-        
 
+        // return view ('tambahdosen');
+        $response = Http::post('http://localhost:8080/dosen/');
+
+        if ($response->successful()) {
+            $tambahdosen = collect($response->json())->sortBy('nidn')->values();
+            return view('Tambahdosen', compact('tambahdosen'));
+        } else {
+            return back()->with('error', 'Gagal mengambil data dosen');
+        }
     }
 
     /**
@@ -31,20 +38,17 @@ class TambahdosenController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi input
         $request->validate([
-            'nidn' => 'required|unique:tambahdosens,nidn|max:15',
-            'nama_dosen' => 'required|string|max:255',
+            'nidn' => 'required|unique:dosens,nidn',
+            'nama_dosen' => 'required'
         ]);
 
-        // Simpan data ke database
-        Tambahdosen::create([
+        tambahdosen::create([
             'nidn' => $request->nidn,
-            'nama_dosen' => $request->nama_dosen,
+            'nama_dosen' => $request->nama
         ]);
 
-        return redirect()->route('datadosen')->with('success', 'Data berhasil ditambahkan!');
-
+        return response()->json(['success' => true]);
     }
 
     /**
@@ -52,10 +56,7 @@ class TambahdosenController extends Controller
      */
     public function show(tambahdosen $tambahdosen)
     {
-        $dataDosen = Tambahdosen::orderBy('nidn', 'asc')->get(); // Urutkan dari NIDN terkecil
-        return view('datadosen', compact('dataDosen'));
-        // $dataDosen = Tambahdosen::all();
-        // return view('datadosen', compact('dataDosen')); // Pastikan ada file datadosen.blade.php
+      
     }
 
     /**
@@ -63,7 +64,7 @@ class TambahdosenController extends Controller
      */
     public function edit(tambahdosen $tambahdosen)
     {
-        //
+       
     }
 
     /**
@@ -71,7 +72,15 @@ class TambahdosenController extends Controller
      */
     public function update(Request $request, tambahdosen $tambahdosen)
     {
-        //
+        $validated = $request->validate([
+            'nidn' => 'required|string|max:20|unique:tambahdosens,nidn,' . $tambahdosen,
+            'nama_dosen' => 'required|string|max:255',
+        ]);
+
+        $dosen = Tambahdosen::findOrFail($tambahdosen);
+        $dosen->update($validated);
+
+        return redirect()->route('datadosen')->with('success', 'Data dosen berhasil diperbarui');
     }
 
     /**
@@ -79,9 +88,6 @@ class TambahdosenController extends Controller
      */
     public function destroy(tambahdosen $tambahdosen)
     {
-        // $dosen = Tambahdosen::findOrFail($tambahdosen);
-        // $dosen->delete();
-
-        // return redirect()->route('datadosen')->with('success', 'Data dosen berhasil dihapus');
+       
     }
 }

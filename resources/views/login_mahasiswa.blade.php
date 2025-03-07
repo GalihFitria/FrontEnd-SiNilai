@@ -41,20 +41,19 @@
 
     <script>
         function validateLogin(event) {
-            event.preventDefault(); // Mencegah form reload halaman
+            event.preventDefault(); 
 
-            // Username dan Password yang Valid
             const validUsername = "fijar";
             const validPassword = "fijar";
 
-            // Ambil Input User
+           
             const inputUsername = document.getElementById("username").value;
             const inputPassword = document.getElementById("password").value;
 
-            // Cek apakah username dan password sesuai
+            
             if (inputUsername === validUsername && inputPassword === validPassword) {
-                // alert("Login berhasil!"); // Bisa diganti dengan modal pop-up
-                window.location.href = "dashboard_mahasiswa"; // Redirect ke halaman dashboard
+                // alert("Login berhasil!");
+                window.location.href = "dashboard_mahasiswa"; 
             } else {
                 document.getElementById("error-message").classList.remove("hidden");
             }

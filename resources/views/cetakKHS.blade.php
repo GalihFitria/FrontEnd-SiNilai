@@ -10,7 +10,7 @@
 
 <body class="bg-gray-100" data-page="cetakKHS">
     <div class="flex">
-        <!-- Sidebar -->
+        
         <aside class="w-64 bg-blue-700 min-h-screen text-white p-4">
             <h1 class="text-center text-2xl font-bold mb-6">SiNilai</h1>
             <nav>
@@ -38,7 +38,7 @@
             </nav>
         </aside>
 
-        <!-- Content -->
+       
         <main class="flex-1 p-6">
             <h2 class=" text-xl font-bold">Cetak KHS</h2>
             <div class="bg-white shadow-md p-4 rounded-lg mt-4">
@@ -80,17 +80,6 @@
     </div>
 
 
-    <!-- Delete Confirmation Modal -->
-    <!-- <div id="deleteModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
-            <h2 class="text-lg font-bold mb-4">Konfirmasi Hapus</h2>
-            <p>Apakah Anda yakin ingin menghapus data ini?</p>
-            <div class="mt-4 flex justify-center space-x-4">
-                <button onclick="deleteData()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Ya, Hapus</button>
-                <button onclick="closeDeleteModal()" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Batal</button>
-            </div>
-        </div>
-    </div> -->
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

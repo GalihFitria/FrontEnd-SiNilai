@@ -10,7 +10,7 @@
 
 <body class="bg-gray-100" data-page="datakelas">
     <div class="flex">
-        <!-- Sidebar -->
+       
         <aside class="w-64 bg-blue-700 min-h-screen text-white p-4">
             <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
             <h1 class="text-center text-4xl font-bold mb-6" style="font-family: 'Lobster', cursive;">Si Nilai</h1>
@@ -39,9 +39,9 @@
             </nav>
         </aside>
 
-        <!-- Content -->
+        
         <main class="flex-1 p-6">
-            <h2 class="text-2xl font-bold">Data Kelas</h2>
+            <h2 class="text-center text-4xl font-bold">.::Data Kelas::.</h2>
             <div class="bg-white shadow-md p-4 rounded-lg mt-4">
                 <div class="flex justify-between mb-4">
                     <a href="tambahkelas" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah Data</a>
@@ -79,7 +79,7 @@
         </main>
     </div>
 
-    <!-- Delete Confirmation Modal -->
+    
     <div id="deleteModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
             <h2 class="text-lg font-bold mb-4">Konfirmasi Hapus</h2>
@@ -175,7 +175,7 @@
             closeDeleteModal();
         }
 
-        //seacrh
+        
         document.getElementById("searchInput").addEventListener("keyup", function() {
             let filter = this.value.toLowerCase();
             let rows = document.querySelectorAll("#kelasTable tr");

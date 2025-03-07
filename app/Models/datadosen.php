@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class datadosen extends Model
 {
     use HasFactory;
+
+
+    protected $table = 'dosen'; // Nama tabel di database
+    protected $fillable = ['nidn', 'nama_dosen'];
 }

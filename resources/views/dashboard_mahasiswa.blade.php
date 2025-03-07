@@ -10,7 +10,7 @@
 
 <body class="bg-gray-100">
     <div class="flex">
-        <!-- Sidebar Biru -->
+        
         <aside id="sidebar" class="w-64 bg-blue-700 min-h-screen text-white p-4 fixed">
             <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
             <h1 class="text-center text-4xl font-bold mb-6" style="font-family: 'Lobster', cursive;">Si Nilai</h1>
@@ -26,7 +26,7 @@
             </nav>
         </aside>
         <div class="flex-1 ml-64">
-            <!-- Navbar -->
+            
             <nav class="bg-white shadow-md p-4 flex justify-between items-center w-[97%] mx-auto mt-4 rounded-lg">
                 <h1 class="text-1xl font-bold text-blue-800 tracking-wide">Sistem Pengelolaan Nilai Mahasiswa/<span class="text-blue-500"> SiNilai</span></h1>
                 <div class="relative">
@@ -52,9 +52,9 @@
                 </div>
             </div>
 
-            <!-- Content -->
+            
             <main class="flex-1 ml-50 p-6 mt-5">
-                <!-- Kartu Hasil Studi (KHS) -->
+                
                 <div class="bg-white p-6 rounded-lg shadow-md border border-blue-300">
                     <h3 class="text-lg font-bold text-blue-700">KARTU HASIL STUDI</h3>
                     <div class="bg-gray-200 p-3 rounded mt-2">
@@ -64,17 +64,17 @@
 
                     <div class="mt-2">
                         <label class="block font-semibold">NPM</label>
-                        <input type="text" class="border p-2 w-100 rounded mt-1" placeholder="Masukkan NPM">
+                        <input type="text" class="border p-2 w-100 rounded mt-1" placeholder="">
                     </div>
                     <div class="mt-2">
                         <label class="block font-semibold">Nama Mahasiswa</label>
-                        <input type="text" class="border p-2 w-1/2 rounded mt-1" placeholder="Masukkan Nama Mahasiswa">
+                        <input type="text" class="border p-2 w-1/2 rounded mt-1" placeholder="">
                     </div>
                     <div class="mt-2">
                         <label class="block font-semibold">Program Studi</label>
-                        <input type="text" class="border p-2 w-1/2 rounded mt-1" placeholder="Masukkan Program Studi">
+                        <input type="text" class="border p-2 w-1/2 rounded mt-1" placeholder="">
                     </div>
-                    <!-- <button class="bg-green-500 text-white p-2 mt-4 rounded hover:bg-green-600">📝 Lihat KHS</button> -->
+                    
 
                     <table class="w-full border mt-4 text-center">
                         <thead>
@@ -115,7 +115,6 @@
                         accountDropdown.classList.toggle("hidden");
                     });
 
-                    // Tutup dropdown jika klik di luar
                     document.addEventListener("click", function(event) {
                         if (!accountButton.contains(event.target) && !accountDropdown.contains(event.target)) {
                             accountDropdown.classList.add("hidden");

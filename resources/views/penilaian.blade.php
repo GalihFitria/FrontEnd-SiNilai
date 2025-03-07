@@ -39,9 +39,9 @@
             </nav>
         </aside>
 
-        <!-- Content -->
+        
         <main class="flex-1 p-6">
-            <h2 class="text-2xl font-bold">Data Nilai Mahasiswa</h2>
+            <h2 class="text-center text-4xl font-bold">.::Data Nilai Mahasiswa::.</h2>
             <div class="bg-white shadow-md p-4 rounded-lg mt-4">
                 <div class="flex justify-between mb-4">
                     <a href="tambahdata" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah Data</a>
@@ -88,7 +88,7 @@
         </main>
     </div>
 
-    <!-- Delete Confirmation Modal -->
+    
     <div id="deleteModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
             <h2 class="text-lg font-bold mb-4">Konfirmasi Hapus</h2>
@@ -143,25 +143,25 @@
             window.location.href = "login";
         }
 
-        let deleteElement = null; // Simpan elemen yang akan dihapus
+        let deleteElement = null; 
 
         function openDeleteModal(event, element) {
             event.preventDefault();
-            deleteElement = element.closest("tr"); // Menyimpan baris yang akan dihapus
+            deleteElement = element.closest("tr"); 
             document.getElementById("deleteModal").classList.remove("hidden");
         }
 
         function closeDeleteModal() {
             document.getElementById("deleteModal").classList.add("hidden");
-            deleteElement = null; // Reset elemen yang akan dihapus
+            deleteElement = null; 
         }
 
         function deleteData() {
             if (deleteElement) {
-                deleteElement.remove(); // Hapus baris dari tabel
-                deleteElement = null; // Reset setelah dihapus
+                deleteElement.remove(); 
+                deleteElement = null; 
             }
-            closeDeleteModal(); // Tutup modal setelah konfirmasi
+            closeDeleteModal();
         }
     </script>
 </body>

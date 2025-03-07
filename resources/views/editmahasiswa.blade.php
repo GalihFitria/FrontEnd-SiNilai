@@ -10,7 +10,7 @@
 
 <body class="bg-gray-100 p-6">
     <div class="flex items-center justify-center h-screen bg-blue-100">
-        <!-- Modal Form -->
+        
         <div id="formModal" class="flex items-center justify-center bg-gray-800 bg-opacity-50 fixed inset-0">
             <div class="bg-white p-6 rounded-lg shadow-lg w-96">
                 <h2 class="text-xl font-bold mb-4 text-center">Edit Data Mahasiswa</h2>
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <!-- Confirmation Modal -->
+ 
     <div id="confirmModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
             <h2 class="text-lg font-bold mb-4">Konfirmasi Perubahan</h2>
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <!-- Success Modal -->
+    
     <div id="successModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
             <div class="flex justify-center items-center mb-4">

@@ -13,6 +13,7 @@ use App\Http\Controllers\DatamahasiswaController;
 use App\Http\Controllers\DataprodiController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\PenilaianController;
+use App\Http\Controllers\TambahdosenController;
 use App\Http\Controllers\TambahdataController;
 use App\Models\penilaian;
 use Illuminate\Support\Facades\Route;
@@ -60,15 +61,16 @@ Route::get('/edit', function () {
 // });
 Route::get('/datadosen', [DatadosenController::class, 'index']);
 
+// Route::resource('datadosen', DatadosenController::class);
+
 Route::get('/editdosen', function () {
     return view('editdosen');
 });
-Route::get('/tambahdosen', function () {
-    return view('tambahdosen');
-});
-//  Route::get('/tambahdosen', [TambahdosenController::class, 'index']);
 
-use App\Http\Controllers\TambahdosenController;
+Route::match(['get', 'post'], '/tambahdosen', [TambahdosenController::class, 'index']);
+//  Route::post('/tambahdosen', [TambahdosenController::class, 'index']);
+
+
 
 // Route Data Dosen
 // Route::get('/datadosen', [TambahdosenController::class, 'show'])->name('datadosen');

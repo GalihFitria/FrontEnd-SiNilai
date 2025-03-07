@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        
         Schema::create('datadosens', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
