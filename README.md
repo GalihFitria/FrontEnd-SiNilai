@@ -7,48 +7,76 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Laravel
+# Laravel 🔥🔥🔥
 
 Laravel adalah framework PHP berbasis MVC (Model-View-Controller) yang dirancang untuk memudahkan pengembangan aplikasi web dengan sintaks yang elegan dan ekspresif. Laravel menyediakan berbagai fitur seperti routing, middleware, templating engine (Blade), ORM (Eloquent), sistem migrasi database, dan keamanan bawaan yang kuat.
 
 
-## Deskripsi
+## 📦 Instalasi Laravel dengan Laragon
+**1. Pastikan Prasyarat Terpenuhi**
+Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
+- Laragon (https://laragon.org/download/)
+- PHP ≥ 8.0 (termasuk dalam Laragon)
+- Composer (termasuk dalam Laragon)
+- MySQL (dapat menggunakan database bawaan Laragon)
+  
+**2. Instal Laravel dengan Laragon**
+- Buka Laragon, lalu klik Kanan → Quick App → Laravel
+- Atau jalankan perintah di terminal Laragon: `laravel new nama_proyek`
+  
+**3. Membuat File baru**
+- Membuat file baru yang langsung berisikan model,migration,controller dan resource
+ 
+  `php artisan make:model DataDosen -mcr`
+  
+  setelah menjalankan perintah tersebut, Laravel akan menghasilkan:
+  1. Model → `app/Models/DataDosen.php`
+  2. Migration → `database/migration/xxxx_xx_xx_xxxxxx_create_datadosens_table.php`
+  3. Contoller →  `app/Http/Controllers/DataDosenController.php`
+    
+- Membuat file view
 
-Project ini adalah frontend dari aplikasi berbasis Laravel. Dibangun menggunakan Laravel untuk mengelola tampilan dan interaksi dengan backend.
+  `php artisan make:view DataDosen`
 
+  akan menghasilkan nama file `DataDosen.blade.php`
+  
+**4. Menjalankan Server Laravel**
+- Masuk ke direktori proyek Laravel dan jalankan diterminal:
+  
+  `php artisan serve`
+  Akses aplikasi melalui browser di `http://127.0.0.1:8000`
+  
+## 🚀 Struktur Folder Laravel
+- `app/` : Berisi kode utama aplikasi
+- `routes/` : Berisi file routing (web.php, api.php)
+- `database/` : Berisi migrasi, seeder, dan model factory
+- `resources/views/` : Berisi file Blade untuk tampilan UI
+- `config/` : Berisi file konfigurasi aplikasi
+- `.env` : File konfigurasi lingkungan (database, cache, dll.)
 
-## Laravel Sponsors
+# Postman 🌐
+Postman adalah alat yang digunakan untuk menguji API dengan mudah, memungkinkan pengembang untuk mengirim permintaan HTTP, melihat respons, dan melakukan debugging.
+**Berikut langkah-langkah menggunakan Postman untuk menguji API yang dikirim dari backend (Laravel):**
+1. Unduh dan instal (https://www.postman.com/downloads/)
+2. Pastikan server Backend dan Frontend berjalan
+   
+   `php spark serve`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+   `php artisan serve`
 
-### Premium Partners
+3. Import File Postman yang telah dikirim dari backend 
+4. Uji API di `routes/web.php`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+   `Route::get('/users', [UserController::class, 'index']);`
+   
+    `Route::post('/users', [UserController::class, 'store']);`
 
-## Contributing
+## Mengirimkan Permintaan GET (Menampilkan Data)
+1. Buka Postman
+2. Pilih Metode GET
+3. Masukkan URL API (jika postman tersebut sudah dari backend maka untuk URL otomatis sudah ada)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   `http://127.0.0.1:8000/api/users`
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. Klik Send
+5. Jika berhasil, akan muncul data dari API dalam format JSON
