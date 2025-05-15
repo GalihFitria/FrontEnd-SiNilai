@@ -13,7 +13,7 @@ class MatakuliahController extends Controller
      */
     public function index()
     {
-       
+
         $response = Http::get('http://localhost:8080/matakuliah');
 
         if ($response->successful()) {
@@ -29,7 +29,7 @@ class MatakuliahController extends Controller
      */
     public function create()
     {
-        //
+        return view('tambahmatkul');
     }
 
     /**
@@ -37,7 +37,29 @@ class MatakuliahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validate = $request->validate([
+                'kode_matkul' => 'required|unique:mata_kuliah,kode_matkul',
+                'nama_matkul' => 'required',
+                'semester' => 'required',
+                'sks' => 'required'
+            ]);
+
+            Http::post('http://localhost:8080/matakuliah', $validate);
+
+            response()->json([
+                'success' => true,
+                'message' => 'mahasiswa berhasil ditambahkan!',
+                'data' => $request
+            ], 201);
+
+            return redirect()->route('matakuliah.index');
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -51,24 +73,54 @@ class MatakuliahController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(matakuliah $matakuliah)
+    public function edit($matakuliah)
     {
         //
+
+        $respon_matakuliah = Http::get("http://localhost:8080/matakuliah/$matakuliah/edit");
+        $matakuliah = $respon_matakuliah->json();
+        return view('editmatkul', [
+            'matakuliah' => $matakuliah
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, matakuliah $matakuliah)
+    public function update(Request $request, $matakuliah)
     {
-        //
+        try {
+            $validate = $request->validate([
+                'kode_matkul' => 'required',
+                'nama_matkul' => 'required',
+                'semester' => 'required',
+                'sks' => 'required'
+            ]);
+
+            Http::put("http://localhost:8080/matakuliah/$matakuliah", $validate);
+
+            response()->json([
+                'success' => true,
+                'message' => 'Dosen berhasil diperbarui',
+                'data' => $request
+            ], 200);
+
+            return redirect()->route('matakuliah.index');
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(matakuliah $matakuliah)
+    public function destroy($matakuliah)
     {
         //
+        Http::delete("http://localhost:8080/matakuliah/$matakuliah");
+        return redirect()->route('matakuliah.index');
     }
 }

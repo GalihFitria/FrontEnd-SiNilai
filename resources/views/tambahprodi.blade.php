@@ -10,25 +10,28 @@
 
 <body class="flex items-center justify-center h-screen bg-blue-100">
 
-    
+
     <div id="formModal" class="flex items-center justify-center bg-gray-800 bg-opacity-50 fixed inset-0">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96">
             <h2 class="text-xl font-bold mb-4 text-center">Tambah Data Prodi</h2>
+            <form action="{{route('prodi.store')}}" method="post">
+                @csrf
 
-            <label class="block">Id Prodi</label>
-            <input type="text" id="idinput" class="border w-full p-2 mb-2 rounded">
+                <label class="block">Id Prodi</label>
+                <input type="text" id="idinput" class="border w-full p-2 mb-2 rounded" name="id_prodi">
 
-            <label class="block">Nama Prodi</label>
-            <input type="text" id="namaInput" class="border w-full p-2 mb-2 rounded">
+                <label class="block">Nama Prodi</label>
+                <input type="text" id="namaInput" class="border w-full p-2 mb-2 rounded" name="nama_prodi">
 
-            <div class="flex justify-center space-x-4 mt-4">
-                <a href="dataprodi" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition duration-200">
-                    Batal
-                </a>
-                <button onclick="showSuccessModal()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200 active:scale-95">
-                    Submit
-                </button>
-            </div>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <a href="{{route('prodi.store')}}" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition duration-200">
+                        Batal
+                    </a>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200 active:scale-95">
+                        Submit
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 

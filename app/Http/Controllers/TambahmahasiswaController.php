@@ -12,7 +12,6 @@ class TambahmahasiswaController extends Controller
      */
     public function index()
     {
-        return view ('tambahmahasiswa');
     }
 
     /**

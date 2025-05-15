@@ -47,81 +47,28 @@ Route::get('/cetakKHS', function () {
 
 
 //Route Penilaian
-Route::get('/penilaian', [PenilaianController::class, 'index']);
-Route::get('/tambahdata', function () {
-    return view('tambahdata');
-});
-Route::get('/edit', function () {
-    return view('edit');
-});
+Route::resource('nilai', PenilaianController::class);
 
-//Route Data Dosen
-// Route::get('/datadosen', function () {
-//     return view('datadosen');
-// });
-Route::get('/datadosen', [DatadosenController::class, 'index']);
 
-// Route::resource('datadosen', DatadosenController::class);
-
-Route::get('/editdosen', function () {
-    return view('editdosen');
-});
-
-Route::match(['get', 'post'], '/tambahdosen', [TambahdosenController::class, 'index']);
-//  Route::post('/tambahdosen', [TambahdosenController::class, 'index']);
+Route::resource('dosen', DatadosenController::class);
+//  Route::post('/dosen', [DatadosenController::class, 'store'])->name('dosen.tambahdosen.store');
 
 
 
-// Route Data Dosen
-// Route::get('/datadosen', [TambahdosenController::class, 'show'])->name('datadosen');
-// Route::get('/tambahdosen', [TambahdosenController::class, 'index'])->name('tambahdosen');
-// Route::post('/tambahdosen', [TambahdosenController::class, 'store'])->name('tambahdosen.store');
-// Route::delete('/datadosen/{id}', [TambahdosenController::class, 'destroy'])->name('datadosen.destroy');
 
+Route::resource('mahasiswa', DatamahasiswaController::class);
 
-//return Data mahasiswa
-Route::get('/datamahasiswa', [DatamahasiswaController::class, 'index']);
-// Route::get('/datamahasiswa', function () {
-//     return view('datamahasiswa');
-// });
-Route::get('/editmahasiswa', function () {
-    return view('editmahasiswa');
-});
-Route::get('/tambahmahasiswa', function () {
-    return view('tambahmahasiswa');
-});
 
 
 //route matkul
-Route::get('/matakuliah', [MatakuliahController::class, 'index']);
-
-Route::get('/editmatkul', function () {
-    return view('editmatkul');
-});
-Route::get('/tambahmatkul', function () {
-    return view('tambahmatkul');
-});
+Route::resource('matakuliah', MatakuliahController::class);
 
 //Route Prodi
-Route::get('/dataprodi', [DataprodiController::class, 'index']);
-
-Route::get('/editprodi', function () {
-    return view('editprodi');
-});
-Route::get('/tambahprodi', function () {
-    return view('tambahprodi');
-});
+Route::resource('prodi', DataprodiController::class);
 
 
-//Route datakelas
-Route::get('/datakelas', [DatakelasController::class, 'index']);
+Route::resource('kelas', DatakelasController::class);
 
-Route::get('/editkelas', function () {
-    return view('editkelas');
-});
-Route::get('/tambahkelas', function () {
-    return view('tambahkelas');
-});
 
 
 Route::resource('login', LoginController::class);

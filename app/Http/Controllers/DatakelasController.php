@@ -29,7 +29,7 @@ class DatakelasController extends Controller
      */
     public function create()
     {
-        //
+        return view('tambahkelas');
     }
 
     /**
@@ -37,7 +37,28 @@ class DatakelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validate = $request->validate([
+                'kode_kelas' => 'required|unique:kelas,kode_kelas',
+                'nama_kelas' => 'required',
+
+            ]);
+
+            Http::post('http://localhost:8080/kelas', $validate);
+
+            response()->json([
+                'success' => true,
+                'message' => 'mahasiswa berhasil ditambahkan!',
+                'data' => $request
+            ], 201);
+
+            return redirect()->route('kelas.index');
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -51,24 +72,52 @@ class DatakelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(datakelas $datakelas)
+    public function edit($datakelas)
     {
-        //
+
+        $respon_kelas = Http::get("http://localhost:8080/kelas/$datakelas/edit");
+        $kelas = $respon_kelas->json();
+
+        return view('editkelas', [
+            'kelas' => $kelas
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, datakelas $datakelas)
+    public function update(Request $request, $datakelas)
     {
-        //
+        try {
+            $validate = $request->validate([
+                'kode_kelas' => 'required',
+                'nama_kelas' => 'required'
+            ]);
+
+            Http::put("http://localhost:8080/kelas/$datakelas", $validate);
+
+            response()->json([
+                'success' => true,
+                'message' => 'Kelas berhasil diperbarui',
+                'data' => $request
+            ], 200);
+
+            return redirect()->route('kelas.index');
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(datakelas $datakelas)
+    public function destroy($datakelas)
     {
         //
+        Http::delete("http://localhost:8080/kelas/$datakelas");
+        return redirect()->route('kelas.index');
     }
 }

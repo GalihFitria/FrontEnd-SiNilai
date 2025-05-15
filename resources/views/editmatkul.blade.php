@@ -10,37 +10,41 @@
 
 <body class="bg-gray-100 p-6">
     <div class="flex items-center justify-center h-screen bg-blue-100">
-        
+
         <div id="formModal" class="flex items-center justify-center bg-gray-800 bg-opacity-50 fixed inset-0">
             <div class="bg-white p-6 rounded-lg shadow-lg w-96">
                 <h2 class="text-xl font-bold mb-4 text-center">Edit Data Matakuliah</h2>
+                <form action="{{ route('matakuliah.update', $matakuliah['kode_matkul']) }}" method="post">
+                    @csrf
+                    @method('PUT')
 
-                <label class="block">Kode Matakuliah</label>
-                <input type="text" id="editKodeMatakuliah" class="border w-full p-2 mb-2 rounded">
+                    <label class="block">Kode Matakuliah</label>
+                    <input type="text" name="kode_matkul" value="{{$matakuliah['kode_matkul']}}" id="editKodeMatakuliah" class="border w-full p-2 mb-2 rounded">
 
-                <label class="block">Nama Matakuliah</label>
-                <input type="text" id="editNamaMatakuliah" class="border w-full p-2 mb-2 rounded">
+                    <label class="block">Nama Matakuliah</label>
+                    <input type="text" name="nama_matkul" value="{{$matakuliah['nama_matkul']}}" id="editNamaMatakuliah" class="border w-full p-2 mb-2 rounded">
 
-                <label class="block">Semester</label>
-                <input type="text" id="editSemester" class="border w-full p-2 mb-2 rounded">
+                    <label class="block">Semester</label>
+                    <input type="text" name="semester" value="{{$matakuliah['semester']}}" id="editSemester" class="border w-full p-2 mb-2 rounded">
 
-                <label class="block">SKS</label>
-                <input type="text" id="editSKS" class="border w-full p-2 mb-2 rounded">
+                    <label class="block">SKS</label>
+                    <input type="text" name="sks" value="{{$matakuliah['sks']}}" id="editSKS" class="border w-full p-2 mb-2 rounded">
 
-                <div class="flex justify-center space-x-6 mt-4">
-                    <a href="matakuliah" class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition duration-200 shadow-md">
-                        Batal
-                    </a>
-                    <button onclick="openConfirmModal()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200 shadow-md active:scale-95">
-                        Ubah Data
-                    </button>
-                </div>
-
+                    <div class="flex justify-center space-x-6 mt-4">
+                        <a href="{{route('matakuliah.index')}}" class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition duration-200 shadow-md">
+                            Batal
+                        </a>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200 shadow-md active:scale-95">
+                            Ubah Data
+                        </button>
+                </form>
             </div>
+
         </div>
     </div>
+    </div>
 
-    
+
     <div id="confirmModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
             <h2 class="text-lg font-bold mb-4">Konfirmasi Perubahan</h2>
@@ -52,7 +56,7 @@
         </div>
     </div>
 
-   
+
     <div id="successModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
             <div class="flex justify-center items-center mb-4">

@@ -14,23 +14,24 @@
     <div id="formModal" class="flex items-center justify-center bg-gray-800 bg-opacity-50 fixed inset-0">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96">
             <h2 class="text-xl font-bold mb-4 text-center">Tambah Data Dosen</h2>
+            <form action="{{route('dosen.store')}}" method="post">
+                @csrf
+                <label class="block">NIDN</label>
+                <input type="text" id="kodeinput" class="border w-full p-2 mb-2 rounded" name="nidn">
 
+                <label class="block">Nama Dosen</label>
+                <input type="text" name="nama_dosen" class="border w-full p-2 mb-2 rounded">
 
-            <label class="block">NIDN</label>
-            <input type="text" id="kodeinput" class="border w-full p-2 mb-2 rounded">
-
-            <label class="block">Nama Dosen</label>
-            <input type="text" id="namaInput" class="border w-full p-2 mb-2 rounded">
-
-            <div class="flex justify-center space-x-4 mt-4">
-                <a href="datadosen" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition duration-200">
-                    Batal
-                </a>
-                <button onclick="showSuccessModal()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200 active:scale-95">
-                    Submit
-                </button>
-            </div>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <a href="{{route('dosen.index')}}" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition duration-200">
+                        Batal
+                    </a>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200 active:scale-95">
+                        Submit
+                    </button>
+            </form>
         </div>
+    </div>
     </div>
 
     <!-- Success Modal -->
@@ -59,7 +60,7 @@
         }
 
         function redirectToDataDosen() {
-            window.location.href = "datadosen";
+            window.location.href = "dosen";
         }
     </script>
 

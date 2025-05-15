@@ -10,27 +10,29 @@
 
 <body class="bg-gray-100 p-6">
     <div class="flex items-center justify-center h-screen bg-blue-100">
-        
+
         <div id="formModal" class="flex items-center justify-center bg-gray-800 bg-opacity-50 fixed inset-0">
             <div class="bg-white p-6 rounded-lg shadow-lg w-96">
                 <h2 class="text-xl font-bold mb-4 text-center">Edit Kelas</h2>
+                <form action="{{ route('kelas.update', $kelas['kode_kelas']) }}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <label class="block">Kode Kelas</label>
+                    <input type="text" name="kode_kelas" value="{{$kelas['kode_kelas']}}" id="editKodeKelas" class="border w-full p-2 mb-2 rounded">
 
-                <label class="block">Kode Kelas</label>
-                <input type="text" id="editKodeKelas" class="border w-full p-2 mb-2 rounded">
-
-                <label class="block">Nama Kelas</label>
-                <input type="text" id="editNamaKelas" class="border w-full p-2 mb-2 rounded">
+                    <label class="block">Nama Kelas</label>
+                    <input type="text" name="nama_kelas" value="{{$kelas['nama_kelas']}}" id="editNamaKelas" class="border w-full p-2 mb-2 rounded">
 
 
-                <div class="flex justify-center space-x-6 mt-4">
-                    <a href="datakelas" class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition duration-200 shadow-md">
-                        Batal
-                    </a>
-                    <button onclick="openConfirmModal()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200 shadow-md active:scale-95">
-                        Ubah Data
-                    </button>
-                </div>
-
+                    <div class="flex justify-center space-x-6 mt-4">
+                        <a href="{{route('kelas.index')}}" class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition duration-200 shadow-md">
+                            Batal
+                        </a>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200 shadow-md active:scale-95">
+                            Ubah Data
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

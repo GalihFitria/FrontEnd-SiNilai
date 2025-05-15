@@ -11,7 +11,7 @@
 
 <body class="bg-gray-100">
     <div class="flex">
-        
+
         <aside id="sidebar" class="w-64 bg-blue-700 min-h-screen text-white p-4 fixed top-0 left-0 bottom-0">
             <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
             <h1 class="text-center text-4xl font-bold mb-6" style="font-family: 'Lobster', cursive;">Si Nilai</h1>
@@ -24,7 +24,7 @@
                             🏠 Dashboard
                         </a>
                     </li>
-                    
+
                     <li class="mb-4 relative">
                         <button id="dropdownButton" class="w-full flex items-center justify-between text-white font-semibold hover:bg-blue-800 p-2 rounded">
                             📊 Pengolahan Data
@@ -32,22 +32,22 @@
                         </button>
                         <ul id="dropdown" class="hidden bg-blue-600 mt-2 rounded-lg">
                             <li>
-                                <a href="datadosen" class="block px-4 py-2 hover:bg-blue-700"> Data Dosen</a>
+                                <a href="{{route('dosen.index')}}" class="block px-4 py-2 hover:bg-blue-700"> Data Dosen</a>
                             </li>
                             <li>
-                                <a href="datamahasiswa" class="block px-4 py-2 hover:bg-blue-700"> Data Mahasiswa</a>
+                                <a href="{{route('mahasiswa.index')}}" class="block px-4 py-2 hover:bg-blue-700"> Data Mahasiswa</a>
                             </li>
                             <li>
-                                <a href="matakuliah" class="block px-4 py-2 hover:bg-blue-700"> Data Mata Kuliah</a>
+                                <a href="{{route('matakuliah.index')}}" class="block px-4 py-2 hover:bg-blue-700"> Data Mata Kuliah</a>
                             </li>
                             <li>
-                                <a href="dataprodi" class="block px-4 py-2 hover:bg-blue-700"> Data Prodi</a>
+                                <a href="{{route('prodi.index')}}" class="block px-4 py-2 hover:bg-blue-700"> Data Prodi</a>
                             </li>
                             <li>
-                                <a href="datakelas" class="block px-4 py-2 hover:bg-blue-700"> Data Kelas</a>
+                                <a href="{{route('kelas.index')}}" class="block px-4 py-2 hover:bg-blue-700"> Data Kelas</a>
                             </li>
                             <li>
-                                <a href="penilaian" class="block px-4 py-2 hover:bg-blue-700"> Penilaian</a>
+                                <a href="{{route('nilai.index')}}" class="block px-4 py-2 hover:bg-blue-700"> Penilaian</a>
                             </li>
                         </ul>
                     </li>
@@ -56,7 +56,7 @@
         </aside>
 
         <div class="flex-1 ml-64">
-            
+
             <nav class="bg-white shadow-md p-4 flex justify-between items-center w-[97%] mx-auto mt-4 rounded-lg">
                 <h1 class="text-1xl font-bold text-blue-800 tracking-wide">Sistem Pengelolaan Nilai Mahasiswa/<span class="text-blue-500"> SiNilai</span></h1>
                 <div class="relative">
@@ -82,7 +82,7 @@
                 </div>
             </div>
 
-            
+
             <main class="p-6">
                 <h2 class="text-xl font-bold">Dashboard</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">

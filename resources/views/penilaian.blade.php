@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Dosen</title>
+    <title>Data Nilai Mahasiswa</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -27,24 +27,25 @@
                             <span id="arrow">▼</span>
                         </button>
                         <ul id="dropdown-menu" class="hidden bg-blue-600 mt-2 rounded-lg">
-                            <li><a href="datadosen" class="block px-4 py-2 hover:bg-blue-700">Data Dosen</a></li>
-                            <li><a href="datamahasiswa" class="block px-4 py-2 hover:bg-blue-700">Data Mahasiswa</a></li>
-                            <li><a href="matakuliah" class="block px-4 py-2 hover:bg-blue-700">Data Mata Kuliah</a></li>
-                            <li><a href="dataprodi" class="block px-4 py-2 hover:bg-blue-700">Data Prodi</a></li>
-                            <li><a href="datakelas" class="block px-4 py-2 hover:bg-blue-700">Data Kelas</a></li>
-                            <li><a href="penilaian" class="block px-4 py-2 hover:bg-blue-700 active-link">Penilaian</a></li>
+                            <li><a href="{{route('dosen.index')}}" class="block px-4 py-2 hover:bg-blue-700">Data Dosen</a></li>
+                            <li><a href="{{route('mahasiswa.index')}}" class="block px-4 py-2 hover:bg-blue-700">Data Mahasiswa</a></li>
+                            <li><a href="{{route('matakuliah.index')}}" class="block px-4 py-2 hover:bg-blue-700 ">Data Mata Kuliah</a></li>
+                            <li><a href="{{route('prodi.index')}}" class="block px-4 py-2 hover:bg-blue-700">Data Prodi</a></li>
+                            <li><a href="{{route('kelas.index')}}" class="block px-4 py-2 hover:bg-blue-700">Data Kelas</a></li>
+                            <li><a href="{{route('nilai.index')}}" class="block px-4 py-2 hover:bg-blue-700 active-link">Penilaian</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </aside>
 
-        
+
         <main class="flex-1 p-6">
             <h2 class="text-center text-4xl font-bold">.::Data Nilai Mahasiswa::.</h2>
             <div class="bg-white shadow-md p-4 rounded-lg mt-4">
                 <div class="flex justify-between mb-4">
-                    <a href="tambahdata" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah Data</a>
+                    <a href="{{route('nilai.create')}}" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah Data</a>
+                    <input type="text" id="searchInput" placeholder="Cari..." class="border p-2 rounded w-1/3">
                 </div>
                 <table class="w-full mt-4 border-collapse border border-gray-300">
                     <thead>
@@ -63,7 +64,7 @@
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody id="nilaiTable">
                         @foreach($nilai as $index => $n)
                         <tr>
                             <td class="border p-2 text-center">{{ $index + 1 }}</td>
@@ -77,18 +78,28 @@
                             <td class="border p-2">{{ $n['nilai_akhir']}}</td>
                             <td class="border p-2">{{ $n['status']}}</td>
                             <td class="border p-2 text-center">
-                                <a href="edit" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
-                                <button onclick="openDeleteModal(event, this)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Hapus</button>
+                                <a href="{{route('nilai.edit', $n['id_nilai'])}}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
+                                <form action="{{route('nilai.destroy',$n['id_nilai'])}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Hapus</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <div class="flex justify-between items-center mt-4">
+                    <button id="prevPage" class="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500">Previous</button>
+                    <span id="pageInfo" class="text-gray-700">Page 1</span>
+                    <button id="nextPage" class="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500">Next</button>
+                </div
+                    </div>
             </div>
         </main>
     </div>
 
-    
+
     <div id="deleteModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
             <h2 class="text-lg font-bold mb-4">Konfirmasi Hapus</h2>
@@ -101,6 +112,34 @@
     </div>
 
     <script>
+        document.getElementById("prevPage").addEventListener("click", function() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        });
+
+        document.getElementById("nextPage").addEventListener("click", function() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        });
+
+        document.getElementById("searchInput").addEventListener("keyup", function() {
+            let filter = this.value.toLowerCase();
+            let rows = document.querySelectorAll("#nilaiTable tr");
+
+            rows.forEach(row => {
+                let namaDosen = row.cells[2].textContent.toLowerCase();
+                if (namaDosen.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+
         document.addEventListener("DOMContentLoaded", function() {
             let currentPage = document.body.getAttribute("data-page");
             let dropdownMenu = document.getElementById("dropdown-menu");
@@ -108,7 +147,7 @@
             let arrow = document.getElementById("arrow");
             let activeLink = document.querySelector(`a[href='${currentPage}']`);
 
-            let pages = ["penilaian", "datadosen", "datamahasiswa", "datamatkul", "dataprodi", "datakelas"];
+            let pages = ["penilaian", "dosen", "datamahasiswa", "datamatkul", "dataprodi", "datakelas"];
 
             if (pages.includes(currentPage)) {
                 dropdownMenu.classList.remove("hidden");
@@ -143,23 +182,23 @@
             window.location.href = "login";
         }
 
-        let deleteElement = null; 
+        let deleteElement = null;
 
         function openDeleteModal(event, element) {
             event.preventDefault();
-            deleteElement = element.closest("tr"); 
+            deleteElement = element.closest("tr");
             document.getElementById("deleteModal").classList.remove("hidden");
         }
 
         function closeDeleteModal() {
             document.getElementById("deleteModal").classList.add("hidden");
-            deleteElement = null; 
+            deleteElement = null;
         }
 
         function deleteData() {
             if (deleteElement) {
-                deleteElement.remove(); 
-                deleteElement = null; 
+                deleteElement.remove();
+                deleteElement = null;
             }
             closeDeleteModal();
         }

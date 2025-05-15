@@ -30,8 +30,7 @@ class DatadosenController extends Controller
      */
     public function create()
     {
-        return view ('tambahdosen');
-
+        return view('tambahdosen');
     }
 
     /**
@@ -39,53 +38,83 @@ class DatadosenController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nidn' => 'required|unique:dosen,nidn',
-            'nama_dosen' => 'required'
+        try {
+            $validate = $request->validate([
+                'nidn' => 'required|unique:dosen,nidn',
+                'nama_dosen' => 'required'
+            ]);
 
+            Http::post('http://localhost:8080/dosen', $validate);
 
+            response()->json([
+                'success' => true,
+                'message' => 'Dosen berhasil ditambahkan!',
+                'data' => $request
+            ], 201);
 
-        ]);
-
-        Datadosen::create([
-            'nidn' => $request->nidn,
-            'nama_dosen' => $request->nama
-
-        ]);
-
-        return response()->json(['success' => true
-        ]);
+            return redirect()->route('dosen.index');
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(datadosen $datadosen)
-    {
-        //
-    }
+    public function show(datadosen $datadosen) {}
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(datadosen $datadosen)
+    public function edit($datadosen)
     {
-        //
+
+        $respon_dosen = Http::get("http://localhost:8080/dosen/$datadosen/edit");
+        $dosen = $respon_dosen->json();
+        return view('editdosen', [
+            'dosen' => $dosen
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, datadosen $datadosen)
+    public function update(Request $request, $datadosen)
     {
-        //
+
+        try {
+            $validate = $request->validate([
+                'nidn' => 'required',
+                'nama_dosen' => 'required'
+            ]);
+
+            Http::put("http://localhost:8080/dosen/$datadosen", $validate);
+
+            response()->json([
+                'success' => true,
+                'message' => 'Dosen berhasil diperbarui',
+                'data' => $request
+            ], 200);
+
+            return redirect()->route('dosen.index');
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(datadosen $datadosen)
+    public function destroy($datadosen)
     {
         //
+        Http::delete("http://localhost:8080/dosen/$datadosen");
+        return redirect()->route('dosen.index');
     }
 }

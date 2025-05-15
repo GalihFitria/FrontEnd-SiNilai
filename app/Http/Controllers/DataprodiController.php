@@ -29,7 +29,7 @@ class DataprodiController extends Controller
      */
     public function create()
     {
-        //
+        return view('tambahprodi');
     }
 
     /**
@@ -37,7 +37,28 @@ class DataprodiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validate = $request->validate([
+                'id_prodi' => 'required|unique:prodi,id_prodi',
+                'nama_prodi' => 'required',
+
+            ]);
+
+            Http::post('http://localhost:8080/prodi', $validate);
+
+            response()->json([
+                'success' => true,
+                'message' => 'mahasiswa berhasil ditambahkan!',
+                'data' => $request
+            ], 201);
+
+            return redirect()->route('prodi.index');
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -51,24 +72,51 @@ class DataprodiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(dataprodi $dataprodi)
+    public function edit($dataprodi)
     {
         //
+        $respon_prodi = Http::get("http://localhost:8080/prodi/$dataprodi/edit");
+        $prodi = $respon_prodi->json();
+        return view('editprodi', [
+            'prodi' => $prodi
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, dataprodi $dataprodi)
+    public function update(Request $request, $dataprodi)
     {
-        //
+        try {
+            $validate = $request->validate([
+                'id_prodi' => 'required',
+                'nama_prodi' => 'required'
+            ]);
+
+            Http::put("http://localhost:8080/prodi/$dataprodi", $validate);
+
+            response()->json([
+                'success' => true,
+                'message' => 'Prodi berhasil diperbarui',
+                'data' => $request
+            ], 200);
+
+            return redirect()->route('prodi.index');
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(dataprodi $dataprodi)
+    public function destroy($dataprodi)
     {
         //
+        Http::delete("http://localhost:8080/prodi/$dataprodi");
+        return redirect()->route('prodi.index');
     }
 }

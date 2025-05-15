@@ -10,7 +10,7 @@
 
 <body class="bg-gray-100" data-page="datamahasiswa">
     <div class="flex">
-        
+
         <aside class="w-64 bg-blue-700 min-h-screen text-white p-4">
             <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
             <h1 class="text-center text-4xl font-bold mb-6" style="font-family: 'Lobster', cursive;">Si Nilai</h1>
@@ -27,12 +27,12 @@
                             <span id="arrow">▼</span>
                         </button>
                         <ul id="dropdown-menu" class="hidden bg-blue-600 mt-2 rounded-lg">
-                            <li><a href="datadosen" class="block px-4 py-2 hover:bg-blue-700">Data Dosen</a></li>
-                            <li><a href="datamahasiswa" class="block px-4 py-2 hover:bg-blue-700 active-link">Data Mahasiswa</a></li>
-                            <li><a href="matakuliah" class="block px-4 py-2 hover:bg-blue-700">Data Mata Kuliah</a></li>
-                            <li><a href="dataprodi" class="block px-4 py-2 hover:bg-blue-700">Data Prodi</a></li>
-                            <li><a href="datakelas" class="block px-4 py-2 hover:bg-blue-700">Data Kelas</a></li>
-                            <li><a href="penilaian" class="block px-4 py-2 hover:bg-blue-700">Penilaian</a></li>
+                            <li><a href="{{route('dosen.index')}}" class="block px-4 py-2 hover:bg-blue-700">Data Dosen</a></li>
+                            <li><a href="{{route('mahasiswa.index')}}" class="block px-4 py-2 hover:bg-blue-700 active-link">Data Mahasiswa</a></li>
+                            <li><a href="{{route('matakuliah.index')}}" class="block px-4 py-2 hover:bg-blue-700">Data Mata Kuliah</a></li>
+                            <li><a href="{{route('prodi.index')}}" class="block px-4 py-2 hover:bg-blue-700">Data Prodi</a></li>
+                            <li><a href="{{route('kelas.index')}}" class="block px-4 py-2 hover:bg-blue-700">Data Kelas</a></li>
+                            <li><a href="{{route('nilai.index')}}" class="block px-4 py-2 hover:bg-blue-700">Penilaian</a></li>
                         </ul>
                     </li>
 
@@ -40,12 +40,12 @@
             </nav>
         </aside>
 
-       
+
         <main class="flex-1 p-6">
             <h2 class="text-center text-4xl font-bold">.::Data Mahasiswa::.</h2>
             <div class="bg-white shadow-md p-4 rounded-lg mt-4">
                 <div class="flex justify-between mb-4">
-                    <a href="tambahmahasiswa" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah Data</a>
+                    <a href="{{route('mahasiswa.create')}}" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah Data</a>
                     <input type="text" id="searchInput" placeholder="Cari..." class="border p-2 rounded w-1/3">
                 </div>
                 <table class="w-full mt-4 border-collapse border border-gray-300">
@@ -69,8 +69,12 @@
                             <td class="border p-2">{{ $mhs['kode_kelas']}}</td>
                             <td class="border p-2">{{ $mhs['id_prodi']}}</td>
                             <td class="border p-2 text-center">
-                                <a href="editmahasiswa" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
-                                <button onclick="openDeleteModal(event, this)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Hapus</button>
+                                <a href="{{route('mahasiswa.edit', $mhs['npm'])}}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
+                                <form action="{{route('mahasiswa.destroy',$mhs['npm'])}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Hapus</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -85,7 +89,7 @@
         </main>
     </div>
 
-   
+
     <div id="deleteModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
             <h2 class="text-lg font-bold mb-4">Konfirmasi Hapus</h2>
