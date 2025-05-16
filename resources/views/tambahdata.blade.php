@@ -18,8 +18,14 @@
                 <label class="block text-sm">Id Nilai</label>
                 <input type="number" name="id_nilai" class="border w-full p-2 mb-2 rounded text-sm">
 
+                <!-- <label class="block text-sm">NPM</label>
+                <input type="number" name="npm" class="border w-full p-2 mb-2 rounded text-sm"> -->
                 <label class="block text-sm">NPM</label>
-                <input type="number" name="npm" class="border w-full p-2 mb-2 rounded text-sm">
+                <select name="npm" class="border w-full p-2 mb-2 rounded text-sm">
+                    @foreach($mahasiswa as $row)
+                    <option value="{{$row['npm']}}">{{$row['npm']}}</option>
+                    @endforeach
+                </select>
 
                 <label class="block text-sm">Nama Matkul</label>
                 <select name="kode_matkul" class="border w-full p-2 mb-2 rounded text-sm">

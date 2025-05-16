@@ -30,6 +30,9 @@ class PenilaianController extends Controller
     public function create()
     {
         //
+        $respon_mahasiswa = Http::get('http://localhost:8080/mahasiswa');
+        $mahasiswa = collect($respon_mahasiswa->json())->sortBy('npm')->values();
+
         $respon_dosen = Http::get('http://localhost:8080/dosen');
         $dosen = collect($respon_dosen->json())->sortBy('nama_dosen')->values();
 
@@ -37,6 +40,7 @@ class PenilaianController extends Controller
         $matakuliah = collect($respon_matakuliah->json())->sortBy('kode_matkul')->values();
 
         return view('tambahdata', [
+            'mahasiswa' => $mahasiswa,
             'matakuliah' => $matakuliah,
             'dosen' => $dosen,
 
@@ -84,11 +88,7 @@ class PenilaianController extends Controller
 
             // Cek apakah API mengembalikan response sukses
             if ($response->successful()) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Nilai berhasil ditambahkan!',
-                    'data' => $data
-                ], 201);
+                return redirect()->route('nilai.index')->with('success', 'Nilai berhasil ditambahkan!');
             } else {
                 return response()->json([
                     'success' => false,
@@ -121,8 +121,21 @@ class PenilaianController extends Controller
 
         $respon_penilaian = Http::get("http://localhost:8080/nilai/$penilaian/edit");
         $penilaian = $respon_penilaian->json();
+
+        $respon_mahasiswa = Http::get('http://localhost:8080/mahasiswa');
+        $mahasiswa = $respon_mahasiswa->json();
+
+        $respon_matakuliah = Http::get('http://localhost:8080/matakuliah');
+        $matakuliah = $respon_matakuliah->json();
+
+        $respon_dosen = Http::get('http://localhost:8080/dosen');
+        $dosen = $respon_dosen->json();
+
         return view('edit', [
-            'penilaian' => $penilaian
+            'penilaian' => $penilaian,
+            'mahasiswa' => $mahasiswa,
+            'matakuliah' => $matakuliah,
+            'dosen' => $dosen
         ]);
     }
 
@@ -131,10 +144,9 @@ class PenilaianController extends Controller
      */
     public function update(Request $request, $penilaian)
     {
-        //
         try {
             // Validasi input
-            $validate = $request->validate([
+            $validated = $request->validate([
                 'id_nilai' => 'required',
                 'npm' => 'required',
                 'kode_matkul' => 'required',
@@ -144,11 +156,11 @@ class PenilaianController extends Controller
                 'uas' => 'required|numeric',
             ]);
 
-            // Menghitung nilai akhir dan status
+            // Hitung nilai akhir dan status
             $nilaiAkhir = ($request->tugas + $request->uts + $request->uas) / 3;
             $status = $nilaiAkhir >= 50 ? 'Lulus' : 'Tidak Lulus';
 
-            // Menyusun data untuk diperbarui
+            // Susun data
             $data = [
                 'id_nilai' => $request->id_nilai,
                 'npm' => $request->npm,
@@ -161,27 +173,19 @@ class PenilaianController extends Controller
                 'status' => $status,
             ];
 
-            // Mengirimkan data ke API eksternal untuk memperbarui
+            // Kirim ke API eksternal
             $response = Http::put("http://localhost:8080/nilai/$penilaian", $data);
 
-            // Cek apakah API mengembalikan response sukses
             if ($response->successful()) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Nilai berhasil diperbarui!',
-                    'data' => $data
-                ], 200);
+                return redirect()->route('nilai.index')
+                    ->with('success', 'Data nilai berhasil diperbarui.');
             } else {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Gagal mengirim data ke API eksternal.',
-                ], 500);
+                return redirect()->back()
+                    ->with('error', 'Gagal mengirim data ke API eksternal.');
             }
         } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
-            ], 500);
+            return redirect()->back()
+                ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
 

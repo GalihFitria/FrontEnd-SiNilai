@@ -18,44 +18,58 @@
             <div id="formModal" class="flex items-center justify-center bg-gray-800 bg-opacity-50 fixed inset-0">
                 <div class="bg-white p-6 rounded-lg shadow-lg w-96">
                     <h2 class="text-xl font-bold mb-4 text-center">Edit Data Penilaian</h2>
-                    <form action="{{ route('nilai.update', $nilai['id_nilai']) }}" method="post">
+                    <form action="{{ route('nilai.update', $penilaian['id_nilai']) }}" method="post">
                         @csrf
                         @method('PUT')
 
                         <label class="block text-sm">Id Nilai</label>
-                        <input type="number" name="id_nilai" value="{{$nilai['id_nilai']}}" class="border w-full p-2 mb-2 rounded text-sm">
+                        <input type="number" name="id_nilai" value="{{$penilaian['id_nilai']}}" class="border w-full p-2 mb-2 rounded text-sm">
 
                         <label class="block text-sm">NPM</label>
-                        <input type="number" name="npm" value="{{$mahasiswa['npm']}}" class="border w-full p-2 mb-2 rounded text-sm">
+                        <select name="npm" class="border w-full p-2 mb-2 rounded text-sm">
+                            @foreach($mahasiswa as $row)
+                            <option value="{{ $row['npm'] }}"
+                                {{ (isset($selectedNpm) && $selectedNpm == $row['npm']) ? 'selected' : '' }}>
+                                {{ $row['npm'] }}
+                            </option>
+                            @endforeach
+                        </select>
 
                         <label class="block text-sm">Nama Matkul</label>
                         <select name="kode_matkul" class="border w-full p-2 mb-2 rounded text-sm">
                             @foreach($matakuliah as $row)
-                            <option value="{{$row['kode_matkul']}}">{{$row['nama_matkul']}}</option>
+                            <option value="{{ $row['kode_matkul'] }}"
+                                {{ (isset($selectedKodeMatkul) && $selectedKodeMatkul == $row['kode_matkul']) ? 'selected' : '' }}>
+                                {{ $row['nama_matkul'] }}
+                            </option>
                             @endforeach
                         </select>
 
                         <label class="block text-sm">Nama Dosen</label>
                         <select name="nidn" class="border w-full p-2 mb-2 rounded text-sm">
                             @foreach($dosen as $row)
-                            <option value="{{$row['nidn']}}">{{$row['nama_dosen']}}</option>
+                            <option value="{{ $row['nidn'] }}"
+                                {{ (isset($selectedNidn) && $selectedNidn == $row['nidn']) ? 'selected' : '' }}>
+                                {{ $row['nama_dosen'] }}
+                            </option>
                             @endforeach
                         </select>
 
+
                         <label class="block text-sm">Nilai Tugas</label>
-                        <input type="number" name="tugas" id="tugas" value="{{$nilai['tugas']}}" class="border w-full p-2 mb-2 rounded text-sm" oninput="hitungNilai()">
+                        <input type="number" name="tugas" id="tugas" value="{{$penilaian['tugas']}}" class="border w-full p-2 mb-2 rounded text-sm" oninput="hitungNilai()">
 
                         <label class="block text-sm">Nilai UTS</label>
-                        <input type="number" name="uts" id="uts" value="{{$nilai['uts']}}" class="border w-full p-2 mb-2 rounded text-sm" oninput="hitungNilai()">
+                        <input type="number" name="uts" id="uts" value="{{$penilaian['uts']}}" class="border w-full p-2 mb-2 rounded text-sm" oninput="hitungNilai()">
 
                         <label class="block text-sm">Nilai UAS</label>
-                        <input type="number" name="uas" id="uas" value="{{$nilai['uas']}}" class="border w-full p-2 mb-2 rounded text-sm" oninput="hitungNilai()">
+                        <input type="number" name="uas" id="uas" value="{{$penilaian['uas']}}" class="border w-full p-2 mb-2 rounded text-sm" oninput="hitungNilai()">
 
                         <label class="block text-sm">Nilai Akhir</label>
-                        <input type="number" name="nilai_akhir" id="nilai_akhir" value="{{$nilai['nilai_akhir']}}" class="border w-full p-2 mb-2 rounded text-sm" readonly>
+                        <input type="number" name="nilai_akhir" id="nilai_akhir" value="{{$penilaian['nilai_akhir']}}" class="border w-full p-2 mb-2 rounded text-sm" readonly>
 
                         <label class="block text-sm">Status</label>
-                        <input type="text" name="status" id="status" value="{{$nilai['status']}}" class="border w-full p-2 mb-4 rounded text-sm" readonly>
+                        <input type="text" name="status" id="status" value="{{$penilaian['status']}}" class="border w-full p-2 mb-4 rounded text-sm" readonly>
 
                         <div class="flex justify-center space-x-4 mt-4">
                             <a href="{{route('nilai.index')}}" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition duration-200 text-sm">
