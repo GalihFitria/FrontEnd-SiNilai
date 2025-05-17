@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class login_dosen extends Model
 {
     use HasFactory;
+    
 }

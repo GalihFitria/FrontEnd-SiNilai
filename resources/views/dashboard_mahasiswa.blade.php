@@ -10,7 +10,7 @@
 
 <body class="bg-gray-100">
     <div class="flex">
-        
+
         <aside id="sidebar" class="w-64 bg-blue-700 min-h-screen text-white p-4 fixed">
             <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
             <h1 class="text-center text-4xl font-bold mb-6" style="font-family: 'Lobster', cursive;">Si Nilai</h1>
@@ -26,7 +26,7 @@
             </nav>
         </aside>
         <div class="flex-1 ml-64">
-            
+
             <nav class="bg-white shadow-md p-4 flex justify-between items-center w-[97%] mx-auto mt-4 rounded-lg">
                 <h1 class="text-1xl font-bold text-blue-800 tracking-wide">Sistem Pengelolaan Nilai Mahasiswa/<span class="text-blue-500"> SiNilai</span></h1>
                 <div class="relative">
@@ -52,9 +52,9 @@
                 </div>
             </div>
 
-            
+
             <main class="flex-1 ml-50 p-6 mt-5">
-                
+
                 <div class="bg-white p-6 rounded-lg shadow-md border border-blue-300">
                     <h3 class="text-lg font-bold text-blue-700">KARTU HASIL STUDI</h3>
                     <div class="bg-gray-200 p-3 rounded mt-2">
@@ -74,7 +74,7 @@
                         <label class="block font-semibold">Program Studi</label>
                         <input type="text" class="border p-2 w-1/2 rounded mt-1" placeholder="">
                     </div>
-                    
+
 
                     <table class="w-full border mt-4 text-center">
                         <thead>
@@ -135,7 +135,7 @@
             }
 
             function confirmLogout() {
-                window.location.href = "login";
+                window.location.href = "{{ route('login.dashboard') }}";
             }
         </script>
 

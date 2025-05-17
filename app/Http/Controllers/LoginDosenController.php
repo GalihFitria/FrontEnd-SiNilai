@@ -12,7 +12,7 @@ class LoginDosenController extends Controller
      */
     public function index()
     {
-        return view ('login_dosen');
+        // return view ('login_dosen');
     }
 
     /**

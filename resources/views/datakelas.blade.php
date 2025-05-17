@@ -17,7 +17,7 @@
             <nav>
                 <ul>
                     <li class="mb-4">
-                        <a href="dashboard_dosen" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
+                        <a href="{{ route('dashboard.dosen') }}" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
                             🏠 Dashboard
                         </a>
                     </li>

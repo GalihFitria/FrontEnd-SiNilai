@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class login_mahasiswa extends Model
 {
     use HasFactory;
+    
 }

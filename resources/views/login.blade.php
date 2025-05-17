@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(to right,rgb(116, 180, 236), #00f2fe);
+            background: linear-gradient(to right, rgb(116, 180, 236), #00f2fe);
         }
     </style>
 </head>
@@ -20,12 +20,12 @@
         <h2 class="text-4xl font-semibold text-blue-600 mt-2" style="font-family: 'Poppins', sans-serif;">di Sistem Pengelolaan Nilai Mahasiswa</h2>
 
         <div class="flex justify-center gap-10 mt-8">
-            <a href="login_dosen" class="bg-white p-6 rounded-lg shadow-md text-center hover:bg-gray-100 transition transform hover:scale-105">
+            <a href="{{ route('login.dosen.form') }}" class="bg-white p-6 rounded-lg shadow-md text-center hover:bg-gray-100 transition transform hover:scale-105">
                 <img src="{{asset('dosen.png')}}" alt="Dosen" class="w-26 h-24 mx-auto">
                 <p class="font-bold text-gray-700 mt-3">Dosen</p>
             </a>
 
-            <a href="login_mahasiswa" class="bg-white p-6 rounded-lg shadow-md text-center hover:bg-gray-100 transition transform hover:scale-105">
+            <a href="{{ route('login.mahasiswa.form') }}" class="bg-white p-6 rounded-lg shadow-md text-center hover:bg-gray-100 transition transform hover:scale-105">
                 <img src="{{asset('mahasiswa.png')}}" alt="Mahasiswa" class="w-26 h-24 mx-auto">
                 <p class="font-bold text-gray-700 mt-3">Mahasiswa</p>
             </a>

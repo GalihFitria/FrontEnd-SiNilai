@@ -16,7 +16,7 @@
             <h1 class="text-center text-4xl font-bold mb-6" style="font-family: 'Lobster', cursive;">Si Nilai</h1>
             <ul>
                 <li class="mb-4">
-                    <a href="dashboard_dosen" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
+                    <a href="{{ route('dashboard.dosen') }}" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
                         🏠 Dashboard
                     </a>
                 </li>

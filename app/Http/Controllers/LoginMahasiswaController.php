@@ -12,7 +12,7 @@ class LoginMahasiswaController extends Controller
      */
     public function index()
     {
-        return view('login_mahasiswa');
+        // return view('login_mahasiswa');
     }
 
     /**

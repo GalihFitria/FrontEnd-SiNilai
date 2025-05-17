@@ -15,8 +15,16 @@
         <p class="text-left text-gray-600 mt-1"><b>Selamat Datang di SiNilai!</b></p>
         <p class="text-left text-gray-500 mb-4">Silahkan masuk ke akun anda.</p>
 
-        <form onsubmit="return validateLogin(event)">
+        {{-- Tampilkan pesan error jika login gagal --}}
+        @if(session('error'))
+        <p class="text-red-600 text-sm mb-2">{{ session('error') }}</p>
+        @endif
+
+        <form method="POST" action="{{ route('login.process') }}">
             @csrf
+            {{-- Hidden input untuk menandai login sebagai mahasiswa --}}
+            <input type="hidden" name="role" value="mahasiswa">
+            
             <label class="block text-gray-700 font-semibold">USERNAME</label>
             <input type="text" id="username" name="username" placeholder="Masukkan username anda" required class="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none">
 
@@ -41,19 +49,19 @@
 
     <script>
         function validateLogin(event) {
-            event.preventDefault(); 
+            event.preventDefault();
 
             const validUsername = "fijar";
             const validPassword = "fijar";
 
-           
+
             const inputUsername = document.getElementById("username").value;
             const inputPassword = document.getElementById("password").value;
 
-            
+
             if (inputUsername === validUsername && inputPassword === validPassword) {
                 // alert("Login berhasil!");
-                window.location.href = "dashboard_mahasiswa"; 
+                window.location.href = "dashboard_mahasiswa";
             } else {
                 document.getElementById("error-message").classList.remove("hidden");
             }
