@@ -112,6 +112,29 @@
     </div>
 
     <script>
+        let currentPage = 1;
+        const rowsPerPage = 10; // Jumlah baris per halaman, bisa disesuaikan
+        const rows = document.querySelectorAll("#nilaiTable tr");
+        const totalPages = Math.ceil(rows.length / rowsPerPage);
+
+        // Fungsi untuk menampilkan halaman tertentu
+        function showPage(page) {
+            const start = (page - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+
+            rows.forEach((row, index) => {
+                if (index >= start && index < end) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+
+            // Update tampilan info halaman
+            document.getElementById("pageInfo").textContent = `Page ${page}`;
+        }
+
+        // Tombol sebelumnya
         document.getElementById("prevPage").addEventListener("click", function() {
             if (currentPage > 1) {
                 currentPage--;
@@ -119,11 +142,17 @@
             }
         });
 
+        // Tombol berikutnya
         document.getElementById("nextPage").addEventListener("click", function() {
             if (currentPage < totalPages) {
                 currentPage++;
                 showPage(currentPage);
             }
+        });
+
+        // Tampilkan halaman pertama saat halaman dimuat
+        document.addEventListener("DOMContentLoaded", function() {
+            showPage(currentPage);
         });
 
         document.getElementById("searchInput").addEventListener("keyup", function() {
