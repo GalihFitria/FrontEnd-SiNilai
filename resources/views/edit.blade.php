@@ -29,7 +29,7 @@
                         <select name="npm" class="border w-full p-2 mb-2 rounded text-sm">
                             @foreach($mahasiswa as $row)
                             <option value="{{ $row['npm'] }}"
-                                {{ (isset($selectedNpm) && $selectedNpm == $row['npm']) ? 'selected' : '' }}>
+                                {{ $penilaian['npm'] == $row['npm'] ? 'selected' : '' }}>
                                 {{ $row['npm'] }}
                             </option>
                             @endforeach
@@ -39,7 +39,7 @@
                         <select name="kode_matkul" class="border w-full p-2 mb-2 rounded text-sm">
                             @foreach($matakuliah as $row)
                             <option value="{{ $row['kode_matkul'] }}"
-                                {{ (isset($selectedKodeMatkul) && $selectedKodeMatkul == $row['kode_matkul']) ? 'selected' : '' }}>
+                                {{ $penilaian['kode_matkul'] == $row['kode_matkul'] ? 'selected' : '' }}>
                                 {{ $row['nama_matkul'] }}
                             </option>
                             @endforeach
@@ -49,11 +49,12 @@
                         <select name="nidn" class="border w-full p-2 mb-2 rounded text-sm">
                             @foreach($dosen as $row)
                             <option value="{{ $row['nidn'] }}"
-                                {{ (isset($selectedNidn) && $selectedNidn == $row['nidn']) ? 'selected' : '' }}>
+                                {{ $penilaian['nidn'] == $row['nidn'] ? 'selected' : '' }}>
                                 {{ $row['nama_dosen'] }}
                             </option>
                             @endforeach
                         </select>
+
 
 
                         <label class="block text-sm">Nilai Tugas</label>

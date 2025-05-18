@@ -16,6 +16,7 @@ use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\TambahdosenController;
 use App\Http\Controllers\TambahdataController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CetakKHSController;
 use Illuminate\Support\Facades\Session;
 use App\Models\penilaian;
 use Illuminate\Support\Facades\Route;
@@ -89,6 +90,7 @@ Route::get('/dashboard/mahasiswa', function () {
 //Route Penilaian
 Route::resource('nilai', PenilaianController::class);
 
+Route::resource('cetakKHS', CetakKHSController::class);
 
 Route::resource('dosen', DatadosenController::class);
 //  Route::post('/dosen', [DatadosenController::class, 'store'])->name('dosen.tambahdosen.store');

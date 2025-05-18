@@ -17,8 +17,13 @@
             <nav>
                 <ul>
                     <li class="mb-4">
-                        <a href="dashboard_mahasiswa" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
+                        <a href="{{ route('dashboard.mahasiswa') }}" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
                             🏠 Dashboard
+                        </a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="{{ route('cetakKHS.index') }}" class="flex items-center space-x-2 text-white font-semibold hover:bg-blue-800 p-2 rounded">
+                            📝 Cetak KHS
                         </a>
                     </li>
 
@@ -53,53 +58,37 @@
             </div>
 
 
-            <main class="flex-1 ml-50 p-6 mt-5">
-
-                <div class="bg-white p-6 rounded-lg shadow-md border border-blue-300">
-                    <h3 class="text-lg font-bold text-blue-700">KARTU HASIL STUDI</h3>
-                    <div class="bg-gray-200 p-3 rounded mt-2">
-                        <p><strong>Keterangan :</strong></p>
-                        <p>Kartu Hasil Studi merupakan fasilitas yang dapat digunakan untuk melihat hasil studi mahasiswa per semester. Selain dapat dilihat secara online, hasil studi ini juga dapat dicetak.</p>
+            <main class="p-6">
+                <h2 class="text-xl font-bold">Dashboard</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                    <div class="bg-white shadow-md p-4 rounded-lg flex items-center space-x-4">
+                        <i class="fas fa-calendar-alt text-blue-600 text-4xl"></i>
+                        <div>
+                            <h4 class="text-blue-600 font-bold">TAHUN AJARAN</h4>
+                            <p class="text-2xl font-bold">2020/2021</p>
+                        </div>
                     </div>
-
-                    <div class="mt-2">
-                        <label class="block font-semibold">NPM</label>
-                        <input type="text" class="border p-2 w-100 rounded mt-1" placeholder="">
+                    <div class="bg-white shadow-md p-4 rounded-lg flex items-center space-x-4">
+                        <i class="fas fa-book-open text-orange-500 text-4xl"></i>
+                        <div>
+                            <h4 class="text-orange-500 font-bold">SEMESTER</h4>
+                            <p class="text-2xl font-bold">Ganjil</p>
+                        </div>
                     </div>
-                    <div class="mt-2">
-                        <label class="block font-semibold">Nama Mahasiswa</label>
-                        <input type="text" class="border p-2 w-1/2 rounded mt-1" placeholder="">
+                    <div class="bg-white shadow-md p-4 rounded-lg flex items-center space-x-4">
+                        <i class="fas fa-user-graduate text-green-600 text-4xl"></i>
+                        <div>
+                            <h4 class="text-green-600 font-bold">MAHASISWA</h4>
+                            <p class="text-2xl font-bold">1.090</p>
+                        </div>
                     </div>
-                    <div class="mt-2">
-                        <label class="block font-semibold">Program Studi</label>
-                        <input type="text" class="border p-2 w-1/2 rounded mt-1" placeholder="">
+                    <div class="bg-white shadow-md p-4 rounded-lg flex items-center space-x-4">
+                        <i class="fas fa-chalkboard-teacher text-green-500 text-4xl"></i>
+                        <div>
+                            <h4 class="text-green-500 font-bold">DOSEN</h4>
+                            <p class="text-2xl font-bold">200</p>
+                        </div>
                     </div>
-
-
-                    <table class="w-full border mt-4 text-center">
-                        <thead>
-                            <tr class="bg-gray-300">
-                                <th class="border p-2">No.</th>
-                                <th class="border p-2">Kode Matkul</th>
-                                <th class="border p-2">Nama Matkul</th>
-                                <th class="border p-2">SKS</th>
-                                <th class="border p-2">Nilai Akhir</th>
-                                <th class="border p-2">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-gray-100">
-                                <td class="border p-2">1</td>
-                                <td class="border p-2">IF101</td>
-                                <td class="border p-2">Algoritma</td>
-                                <td class="border p-2">3</td>
-                                <td class="border p-2">A</td>
-                                <td class="border p-2">Lulus</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <button class="bg-blue-500 text-white p-2 mt-4 rounded hover:bg-blue-600">🖨 Cetak KHS</button>
                 </div>
             </main>
         </div>
