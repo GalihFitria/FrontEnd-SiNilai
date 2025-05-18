@@ -68,6 +68,8 @@ Route::get('/dashboard/mahasiswa', function () {
 })->name('dashboard.mahasiswa');
 
 
+Route::get('/export-pdf', [CetakKHSController::class, 'exportPdf']) ->name ('export.pdf');
+
 
 
 // Route::get('/', function () {

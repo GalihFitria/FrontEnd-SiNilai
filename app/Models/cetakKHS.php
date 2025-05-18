@@ -9,3 +9,5 @@ class cetakKHS extends Model
 {
     use HasFactory;
 }
+
+

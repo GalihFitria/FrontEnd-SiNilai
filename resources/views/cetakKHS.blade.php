@@ -82,7 +82,13 @@
                         </tbody>
                     </table>
 
-                    <button class="bg-blue-500 text-white p-2 mt-4 rounded hover:bg-blue-600">🖨 Cetak KHS</button>
+                    <form action="{{ route('export.pdf') }}" method="GET">
+                        <button type="submit" class="bg-blue-500 text-white p-2 mt-4 rounded hover:bg-blue-600">
+                            🖨 Cetak KHS
+                        </button>
+                    </form>
+
+                    <!-- <button class="bg-blue-500 text-white p-2 mt-4 rounded hover:bg-blue-600">🖨 Cetak KHS</button> -->
                 </div>
             </main>
         </div>
