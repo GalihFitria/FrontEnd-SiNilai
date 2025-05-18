@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Mahasiswa</title>
+    <title>Cetak KHS</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -68,15 +68,17 @@
                                 <th class="border p-2">Status</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id='khsTable'>
+                            @foreach($khs as $index => $k)
                             <tr class="bg-gray-100">
-                                <td class="border p-2">1</td>
-                                <td class="border p-2">IF101</td>
-                                <td class="border p-2">Algoritma</td>
-                                <td class="border p-2">3</td>
-                                <td class="border p-2">A</td>
-                                <td class="border p-2">Lulus</td>
+                                <td class="border p-2">{{ $index + 1 }}</td>
+                                <td class="border p-2">{{ $k['Kode Mata Kuliah']}}</td>
+                                <td class="border p-2">{{ $k['Nama Mata Kuliah']}}</td>
+                                <td class="border p-2">{{ $k['Jumlah SKS']}}</td>
+                                <td class="border p-2">{{ $k['Nilai']}}</td>
+                                <td class="border p-2">{{ $k['Status Kelulusan']}}</td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
