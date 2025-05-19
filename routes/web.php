@@ -69,8 +69,8 @@ Route::get('/dashboard/mahasiswa', function () {
 })->name('dashboard.mahasiswa');
 
 
-// untuk mengekspor KHS ke pdf
-Route::get('/export-pdf', [CetakKHSController::class, 'exportPdf']) ->name ('export.pdf');
+//untuk membuat rute tunggal yang merespons permintaan GET
+Route::get('/export-pdf', [CetakKHSController::class, 'exportPdf'])->name('export.pdf');
 
 
 
@@ -78,11 +78,11 @@ Route::resource('nilai', PenilaianController::class);
 
 Route::resource('cetakKHS', CetakKHSController::class);
 
+//membuat banyak route sekaligus
+//resource mendefinisikan semua rute yg diperlukan untuk operasi CRUD 
 Route::resource('dosen', DatadosenController::class);
 
 Route::resource('mahasiswa', DatamahasiswaController::class);
 Route::resource('matakuliah', MatakuliahController::class);
 Route::resource('prodi', DataprodiController::class);
 Route::resource('kelas', DatakelasController::class);
-
-

@@ -57,6 +57,7 @@
                         </tr>
                     </thead>
                     <tbody id="dosenTable">
+                        <!--menampilkan data dosen dari BE-->
                         @foreach($dosen as $index => $d)
                         <tr>
                             <td class="border p-2 text-center">{{ $index + 1 }}</td> <!-- Nomor otomatis -->
@@ -76,6 +77,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                <!-- Navigasi halaman (pagination) -->
                 <div class="flex justify-between items-center mt-4">
                     <button id="prevPage" class="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500">Previous</button>
                     <span id="pageInfo" class="text-gray-700">Page 1</span>
@@ -98,6 +100,7 @@
     </div>
 
     <script>
+        // Fungsi pagination
         let currentPage = 1;
         const rowsPerPage = 10;
         const table = document.getElementById("dosenTable");
@@ -116,6 +119,7 @@
             document.getElementById("pageInfo").textContent = `Page ${page} of ${totalPages}`;
         }
 
+        // Navigasi halaman sebelumnya dan selanjutnya
         document.getElementById("prevPage").addEventListener("click", function() {
             if (currentPage > 1) {
                 currentPage--;
@@ -132,6 +136,7 @@
 
         showPage(currentPage);
 
+        // Fungsi dropdown menu otomatis terbuka jika halaman cocok
         document.addEventListener("DOMContentLoaded", function() {
             let currentPage = document.body.getAttribute("data-page");
             let dropdownMenu = document.getElementById("dropdown-menu");
@@ -182,7 +187,7 @@
             closeDeleteModal();
         }
 
-
+        // Fungsi pencarian dosen
         document.getElementById("searchInput").addEventListener("keyup", function() {
             let filter = this.value.toLowerCase();
             let rows = document.querySelectorAll("#dosenTable tr");

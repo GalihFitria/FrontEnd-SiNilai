@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Http;
 
 class DatadosenController extends Controller
 {
-    /**
+    /*controller di Laravel bertujuan menangani semua proses CRUD (Create, Read, Update, Delete) data dosen. 
+    Semua data diambil dan dikirim melalui API eksternal (
+    *
      * menampilkan daftar semua data dosen
      * mengambil data dari API eksternal dan menampilkannya pada view datadosen
      */
@@ -17,8 +19,8 @@ class DatadosenController extends Controller
         // return view ('datadosen');
         $response = Http::get('http://localhost:8080/dosen');
 
-        if ($response->successful()) {
-            // mengurutkan data dosen berdasarkan NIDN
+        if ($response->successful()) { 
+        // mengurutkan data dosen berdasarkan NIDN
             $dosen = collect($response->json())->sortBy('nidn')->values();
             return view('datadosen', compact('dosen'));
         } else {
