@@ -43,7 +43,7 @@
                         <p>Kartu Hasil Studi merupakan fasilitas yang dapat digunakan untuk melihat hasil studi mahasiswa per semester. Selain dapat dilihat secara online, hasil studi ini juga dapat dicetak.</p>
                     </div>
 
-                    <div class="mt-2">
+                    <!-- <div class="mt-2">
                         <label class="block font-semibold">NPM</label>
                         <input type="text" class="border p-2 w-100 rounded mt-1" placeholder="">
                     </div>
@@ -54,7 +54,7 @@
                     <div class="mt-2">
                         <label class="block font-semibold">Program Studi</label>
                         <input type="text" class="border p-2 w-1/2 rounded mt-1" placeholder="">
-                    </div>
+                    </div> -->
 
 
                     <table class="w-full border mt-4 text-center">
