@@ -1,6 +1,6 @@
 <?php
 
-
+//import semua controller
 use App\Http\Controllers\IndraController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LoginDosenController;
@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
 // Halaman login umum
 // Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
 
+// Halaman login umum
 Route::get('/', function () {
     return view('login');
 })->name('login.dashboard');
@@ -68,34 +69,16 @@ Route::get('/dashboard/mahasiswa', function () {
 })->name('dashboard.mahasiswa');
 
 
+// untuk mengekspor KHS ke pdf
 Route::get('/export-pdf', [CetakKHSController::class, 'exportPdf']) ->name ('export.pdf');
 
 
 
-// Route::get('/', function () {
-//     return view('login');
-// });
-
-// //Router Dashboard
-// Route::get('/dashboard_dosen', function () {
-//     return view('dashboard_dosen');
-// });
-// Route::get('/dashboard_mahasiswa', function () {
-//     return view('dashboard_mahasiswa');
-// });
-
-// Route::get('/cetakKHS', function () {
-//     return view('cetakKHS');
-// });
-
-
-//Route Penilaian
 Route::resource('nilai', PenilaianController::class);
 
 Route::resource('cetakKHS', CetakKHSController::class);
 
 Route::resource('dosen', DatadosenController::class);
-//  Route::post('/dosen', [DatadosenController::class, 'store'])->name('dosen.tambahdosen.store');
 
 Route::resource('mahasiswa', DatamahasiswaController::class);
 Route::resource('matakuliah', MatakuliahController::class);
@@ -103,12 +86,3 @@ Route::resource('prodi', DataprodiController::class);
 Route::resource('kelas', DatakelasController::class);
 
 
-
-// Route::resource('login', LoginController::class);
-// Route::resource('login_dosen', LoginDosenController::class);
-// Route::resource('login_mahasiswa', LoginMahasiswaController::class);
-// Router::resource('penilaian', PenilaianController::class);
-
-// Route::resource('dashboard_dosen',DashboardDosenController::class);
-// Route::get('/dashboar_dosen', [DashboardDosenController::class, 'index']);
-// Route::get('/indra',[IndraController::class,'index']);
