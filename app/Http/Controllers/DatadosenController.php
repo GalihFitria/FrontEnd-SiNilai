@@ -17,8 +17,8 @@ class DatadosenController extends Controller
         // return view ('datadosen');
         $response = Http::get('http://localhost:8080/dosen');
 
-        if ($response->successful()) { 
-        // mengurutkan data dosen berdasarkan NIDN
+        if ($response->successful()) {
+            // mengurutkan data dosen berdasarkan NIDN
             $dosen = collect($response->json())->sortBy('nidn')->values();
             return view('datadosen', compact('dosen'));
         } else {
@@ -29,7 +29,7 @@ class DatadosenController extends Controller
 
 
     /**
-     * Show the form for creating a new resource.
+     * Menampilkan halaman form untuk menambahkan data dosen baru.
      */
     public function create()
     {
@@ -37,7 +37,7 @@ class DatadosenController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * menyimpan data dosen baru ke database melalui API.
      */
     public function store(Request $request)
     {
@@ -70,7 +70,7 @@ class DatadosenController extends Controller
     public function show(datadosen $datadosen) {}
 
     /**
-     * Show the form for editing the specified resource.
+     * menampilkan halaman edit data dosen berdasarkan nidn.
      */
     public function edit($datadosen)
     {
@@ -83,7 +83,7 @@ class DatadosenController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * memperbarui data dosen melalui API berdasarkan nidn.
      */
     public function update(Request $request, $datadosen)
     {
@@ -101,7 +101,7 @@ class DatadosenController extends Controller
                 'message' => 'Dosen berhasil diperbarui',
                 'data' => $request
             ], 200);
-
+            //redirect ke halaman index dosen
             return redirect()->route('dosen.index');
         } catch (\Exception $e) {
             return response()->json([
@@ -112,7 +112,7 @@ class DatadosenController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Menghapus data dosen berdasarkan nidn melalui API.
      */
     public function destroy($datadosen)
     {
