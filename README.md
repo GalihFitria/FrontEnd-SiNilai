@@ -23,6 +23,7 @@ Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
 **2. Instal Laravel dengan Laragon**
 - Buka Laragon, lalu klik Kanan → Quick App → Laravel
 - Atau jalankan perintah di terminal Laragon: `laravel new nama_proyek`
+- lewat terminal menggunakan composer: `composer create-project --prefer-dist laravel/laravel nama-proyek`
   
 **3. Membuat File baru**
 - Membuat file baru yang langsung berisikan model,migration,controller dan resource
