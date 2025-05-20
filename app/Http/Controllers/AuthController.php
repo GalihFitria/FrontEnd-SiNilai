@@ -8,22 +8,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
-
 class AuthController extends Controller
 {
     public function showLoginForm()
     {
         return view('login');
-    }
-
-    public function showDosenLoginForm()
-    {
-        return view('login_dosen');
-    }
-
-    public function showMahasiswaLoginForm()
-    {
-        return view('login_mahasiswa');
     }
 
     public function login(Request $request)
@@ -32,14 +21,13 @@ class AuthController extends Controller
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
-            'role' => 'required|in:dosen,mahasiswa',
         ]);
 
         // Cari user berdasarkan username
         $user = User::where('username', $request->username)->first();
 
-        // Cek apakah user ada, password cocok (plain text), dan role sesuai
-        if ($user && $request->password === $user->password && $user->role === $request->role) {
+        // Cek apakah user ada dan password cocok (plain text)
+        if ($user && $request->password === $user->password) {
             // Simpan data user ke session
             Session::put('user_id', $user->id);
             Session::put('username', $user->username);
@@ -53,12 +41,11 @@ class AuthController extends Controller
             }
         }
 
-        // Jika gagal, kembali ke form login sesuai role dengan pesan error
-        $route = $request->role === 'dosen' ? 'login.dosen.form' : 'login.mahasiswa.form';
-        return redirect()->route($route)->with('error', 'Username, password, atau role salah!');
+        // Jika gagal, kembali ke form login dengan pesan error
+        return redirect()->route('login.form')->with('error', 'Username atau password salah!');
     }
 
-    public function logout($request)
+    public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();

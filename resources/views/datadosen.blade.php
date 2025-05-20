@@ -64,14 +64,18 @@
                             <td class="border p-2">{{ $d['nidn'] }}</td>
                             <td class="border p-2">{{ $d['nama_dosen'] }}</td>
 
-                            <td class="border p-2 text-center">
-                                <a href="{{route('dosen.edit', $d['nidn'])}}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
-                                <form action="{{route('dosen.destroy',$d['nidn'])}}" method="post">
+                            <td class="border p-2 text-center flex gap-2 justify-center">
+
+                                <a href="{{ route('dosen.edit', $d['nidn']) }}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
+
+                                <form action="{{ route('dosen.destroy', $d['nidn']) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Hapus</button>
                                 </form>
                             </td>
+
+
                             </td>
                         </tr>
                         @endforeach

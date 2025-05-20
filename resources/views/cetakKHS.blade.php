@@ -37,12 +37,14 @@
             <main class="flex-1 ml-50 p-6 mt-5">
 
                 <div class="bg-white p-6 rounded-lg shadow-md border border-blue-300">
-                    <h3 class="text-lg font-bold text-blue-700">KARTU HASIL STUDI</h3>
+                    <h2 class="text-lg font-bold text-blue-700">KARTU HASIL STUDI</h2>
                     <div class="bg-gray-200 p-3 rounded mt-2">
                         <p><strong>Keterangan :</strong></p>
                         <p>Kartu Hasil Studi merupakan fasilitas yang dapat digunakan untuk melihat hasil studi mahasiswa per semester. Selain dapat dilihat secara online, hasil studi ini juga dapat dicetak.</p>
-                    </div>
-
+                    </div><br>
+                    <h3>Nama : Andika Wijaya</h3>
+                    <h4>NPM : 22000</h4>
+                    <h4>Program Studi : D3-Teknik Informatika</h4>
                     <!-- <div class="mt-2">
                         <label class="block font-semibold">NPM</label>
                         <input type="text" class="border p-2 w-100 rounded mt-1" placeholder="">

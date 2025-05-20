@@ -62,14 +62,17 @@
                             <td class="border p-2 text-center">{{ $index + 1 }}</td>
                             <td class="border p-2">{{ $k['kode_kelas'] }}</td>
                             <td class="border p-2">{{ $k['nama_kelas'] }}</td>
-                            <td class="border p-2 text-center">
-                                <a href="{{route('kelas.edit', $k['kode_kelas'])}}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
-                                <form action="{{route('kelas.destroy',$k['kode_kelas'])}}" method="post">
+
+                            <td class="border p-2 text-center flex gap-2 justify-center">
+                                <a href="{{ route('kelas.edit', $k['kode_kelas']) }}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
+
+                                <form action="{{ route('kelas.destroy', $k['kode_kelas']) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Hapus</button>
                                 </form>
                             </td>
+                            
                         </tr>
                         @endforeach
                     </tbody>

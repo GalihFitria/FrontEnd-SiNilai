@@ -16,7 +16,7 @@ class DatadosenController extends Controller
      */
     public function index()
     {
-        // return view ('datadosen');
+        
         $response = Http::get('http://localhost:8080/dosen');
 
         if ($response->successful()) { 
@@ -66,10 +66,6 @@ class DatadosenController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(datadosen $datadosen) {}
 
     /**
      * menampilkan halaman edit data dosen berdasarkan nidn.

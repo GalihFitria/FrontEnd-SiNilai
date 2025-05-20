@@ -48,7 +48,7 @@ Route::get('/login/mahasiswa', [AuthController::class, 'showMahasiswaLoginForm']
 
 // Proses login (form post dari login dosen/mahasiswa)
 Route::post('/login', [AuthController::class, 'login'])->name('login.process');
-
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
 // Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

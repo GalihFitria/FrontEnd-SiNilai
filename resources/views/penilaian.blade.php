@@ -77,14 +77,25 @@
                             <td class="border p-2">{{ $n['uas']}}</td>
                             <td class="border p-2">{{ $n['nilai_akhir']}}</td>
                             <td class="border p-2">{{ $n['status']}}</td>
-                            <td class="border p-2 text-center">
+
+                            <td class="border p-2 text-center flex gap-2 justify-center">
+                                <a href="{{ route('nilai.edit', $n['id_nilai']) }}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
+
+                                <form action="{{ route('nilai.destroy', $n['id_nilai']) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Hapus</button>
+                                </form>
+                            </td>
+
+                            <!-- <td class="border p-2 text-center">
                                 <a href="{{route('nilai.edit', $n['id_nilai'])}}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
                                 <form action="{{route('nilai.destroy',$n['id_nilai'])}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Hapus</button>
                                 </form>
-                            </td>
+                            </td> -->
                         </tr>
                         @endforeach
                     </tbody>
