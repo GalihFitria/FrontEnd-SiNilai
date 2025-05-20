@@ -16,7 +16,7 @@ Laravel adalah framework PHP berbasis MVC (Model-View-Controller) yang dirancang
 **1. Pastikan Prasyarat Terpenuhi**
 Sebelum menginstal Laravel menggunakan Laragon, pastikan sistem memiliki:
 - Laragon (https://laragon.org/download/)
-- PHP ≥ 8.0 (termasuk dalam Laragon)
+- PHP ≥ 8.1 (termasuk dalam Laragon)
 - Composer (termasuk dalam Laragon)
 - MySQL (dapat menggunakan database bawaan Laragon)
   
