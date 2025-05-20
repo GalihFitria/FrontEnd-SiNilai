@@ -57,7 +57,7 @@ class PenilaianController extends Controller
         try {
             // Validasi input
             $validate = $request->validate([
-                'id_nilai' => 'required|unique:nilai,id_nilai',
+                // 'id_nilai' => 'required|unique:nilai,id_nilai',
                 'npm' => 'required',
                 'kode_matkul' => 'required',
                 'nidn' => 'required',
@@ -72,7 +72,7 @@ class PenilaianController extends Controller
 
             // Menyusun data untuk dikirim ke API eksternal
             $data = [
-                'id_nilai' => $request->id_nilai,
+                // 'id_nilai' => $request->id_nilai,
                 'npm' => $request->npm,
                 'kode_matkul' => $request->kode_matkul,
                 'nidn' => $request->nidn,
