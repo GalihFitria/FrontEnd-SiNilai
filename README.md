@@ -13,6 +13,7 @@ Proyek ini merupakan implementasi frontend Laravel dengan Tailwind CSS yang berk
 - Laravel HTTP Client (untuk konsumsi API)
 - REST API Backend (misal: CodeIgniter 4)
 - Vite (build frontend asset Laravel)
+- Postman (untuk cek EndPoint BE)
 
 ## DATABASE
 <h3>import database</h3>
